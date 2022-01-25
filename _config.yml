@@ -30,6 +30,7 @@ logo                     : # path of logo image to display in the masthead, e.g.
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
+
 comments:
   provider               : "utterances" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   disqus:
@@ -54,15 +55,18 @@ comments:
   staticman:
     branch               : # "master"
     endpoint             : # "https://{your Staticman v3 API}/v3/entry/github/"
+
 reCaptcha:
   siteKey                :
   secret                 :
+
 atom_feed:
   path                   : # blank (default) uses feed.xml
   hide                   : # true, false (default)
-search                   : # true, false (default)
+
+search                   : true # true, false (default)
 search_full_content      : # true, false (default)
-search_provider          : # lunr (default), algolia, google
+search_provider          : lunr # lunr (default), algolia, google
 algolia:
   application_id         : # YOUR_APPLICATION_ID
   index_name             : # YOUR_INDEX_NAME
@@ -71,6 +75,7 @@ algolia:
 google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
+
 # SEO Related
 google_site_verification :
 bing_site_verification   :
@@ -103,52 +108,53 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Hoyong Jin"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
-  email            :
+  bio              : "Computer Archi. and Deep Learning Engineer.<br/>
+                      Sport Climber."
+  location         : "Suwon, South Korea"
+#  email            : "jin8495@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:your.name@email.com"
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
+      url: "mailto:jin8495@gmail.com"
+#    - label: "Website"
+#      icon: "fas fa-fw fa-link"
+#      # url: "https://your-website.com"
+#    - label: "Twitter"
+#      icon: "fab fa-fw fa-twitter-square"
+#      # url: "https://twitter.com/"
+#    - label: "Facebook"
+#      icon: "fab fa-fw fa-facebook-square"
+#      # url: "https://facebook.com/"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+      url: "https://instagram.com/rtds_beta/"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/jin8495/"
 
 # Site Footer
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url:
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      # url:
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
+#    - label: "Twitter"
+#      icon: "fab fa-fw fa-twitter-square"
+#      # url:
+#    - label: "Facebook"
+#      icon: "fab fa-fw fa-facebook-square"
+#      # url:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url:
+      url: "https://instagram.com/rtds_beta/"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/jin8495/"
+#    - label: "GitLab"
+#      icon: "fab fa-fw fa-gitlab"
+#      # url:
+#    - label: "Bitbucket"
+#      icon: "fab fa-fw fa-bitbucket"
+#      # url:
 
 
 # Reading Files
@@ -275,7 +281,6 @@ compress_html:
   ignore:
     envs: development
 
-
 # Defaults
 defaults:
   # _posts
@@ -290,3 +295,5 @@ defaults:
       comments: true
       share: true
       related: true
+      toc: true
+      toc_label: "Contents"
