@@ -143,10 +143,10 @@ footer:
 #    - label: "Facebook"
 #      icon: "fab fa-fw fa-facebook-square"
 #      # url:
-    - label: "Instagram"
+    - label: ""
       icon: "fab fa-fw fa-instagram"
       url: "https://instagram.com/rtds_beta/"
-    - label: "GitHub"
+    - label: ""
       icon: "fab fa-fw fa-github"
       url: "https://github.com/jin8495/"
 #    - label: "GitLab"
@@ -155,6 +155,7 @@ footer:
 #    - label: "Bitbucket"
 #      icon: "fab fa-fw fa-bitbucket"
 #      # url:
+  feed: false
 
 
 # Reading Files
@@ -293,6 +294,6 @@ defaults:
       show_date: true
       read_time: false
       comments: true
-      share: true
+      share: false
       related: true
       toc: true
