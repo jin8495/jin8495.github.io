@@ -1,7 +1,7 @@
 # To-do list
 
 ### - Config
-  - [ ] Comments
+  - [x] Comments
   - [ ] Feed
   - [ ] SEO
   - [ ] Google Analytics
@@ -16,3 +16,6 @@
 ### - etc
   - [ ] Search
     - A special page for search menu
+  - [ ] Favicon
+  - [ ] Portrait
+    - Outdoor stickers on the back of my laptop
