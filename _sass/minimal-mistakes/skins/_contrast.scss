@@ -1,14 +1,18 @@
 /* ==========================================================================
-   Contrast skin
+   Contrast skin (Customized)
    ========================================================================== */
 
 /* Colors */
-$text-color: #000 !default;
+$background-color: #dddddd !default;
+$text-color: #202020 !default;
 $muted-text-color: $text-color !default;
-$primary-color: #ff0000 !default;
+//$primary-color: #ff0000 !default;
+$primary-color: #b05857 !default;
 $border-color: mix(#fff, $text-color, 75%) !default;
-$footer-background-color: #000 !default;
-$link-color: #0000ff !default;
+//$footer-background-color: #000 !default;
+$footer-background-color: #2d2d2d !default;
+//$link-color: #0000ff !default;
+$link-color: #4b6480 !default;
 $masthead-link-color: $text-color !default;
 $masthead-link-color-hover: $text-color !default;
 $navicon-link-color-hover: mix(#fff, $text-color, 80%) !default;
