@@ -8,4 +8,6 @@
 ### - Sidebar
   - [ ] Tags
   - [ ] Category
+### - etc
+  - [ ] Search
 
