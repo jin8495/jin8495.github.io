@@ -12,9 +12,16 @@
 ### - Header
   - [x] Dropdown
     - ref: https://chaerim-kim.github.io/jekyll%20blog/Jekyll-2/
-  - [ ] Categories
+  - [x] Categories
     - https://ansohxxn.github.io/blog/category/
 ### - etc
   - [ ] Favicon
   - [ ] Portrait
-    - Idea1: Outdoor stickers on the back of my laptop
+    - Idea: Outdoor stickers on the back of my laptop
+  - [ ] Pagination
+    - Prev. and Next. within the same category
+-----------
+Ref:
+- https://ansohxxn.github.io/
+- https://chaerim-kim.github.io/
+  
