@@ -15,7 +15,7 @@
   - [x] Categories
     - https://ansohxxn.github.io/blog/category/
 ### - etc
-  - [ ] Favicon
+  - [x] Favicon
   - [ ] Portrait
     - Idea: Outdoor stickers on the back of my laptop
   - [ ] Pagination
