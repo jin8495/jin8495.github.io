@@ -291,20 +291,6 @@ compress_html:
 
 # Defaults
 defaults:
-  # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: false
-      show_date: true
-      read_time: false
-      comments: true
-      share: false
-      related: true
-      toc: true
-#      hidden: false
   # _pages
   - scope:
       path: ""
@@ -318,5 +304,46 @@ defaults:
       share: false
       related: false
       toc: false
+
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: false
+      show_date: true
+      read_time: false
+      comments: true
+      share: false
+      related: true
+      toc: true
+
+  # set categories by directory
+  - scope:
+      path: _posts/sw-test-1
+      type: posts
+    values:
+      category:
+        - SW Test 1
+  - scope:
+      path: _posts/sw-test-2
+      type: posts
+    values:
+      category:
+        - SW Test 2
+  - scope:
+      path: _posts/hw-test-1
+      type: posts
+    values:
+      category:
+        - HW Test 1
+  - scope:
+      path: _posts/hw-test-2
+      type: posts
+    values:
+      category:
+        - HW Test 2
+  # WIP
 
 

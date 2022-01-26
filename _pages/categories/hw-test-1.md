@@ -1,7 +1,7 @@
 ---
-title: "Sample 1"
+title: "HW Test 1"
 layout: category
-permalink: /sample1
+permalink: /hw-test-1
 ---
 
 <!--{% assign posts = site.categories['Sample 1'] %}-->
