@@ -1,14 +1,12 @@
 # main links
 main:
-#  - title: "Quick-Start Guide"
-#    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
   - title: "About"
     url: /about/
-  - title: "Sample Category 1"
-    url: /category_sw/
-  - title: "Sample Category 2"
-    url: /category_hw/
-  - title: "Sample Category 3"
-    url: /category_climb/
+  - title: "Sample 1"
+    url: /sample1/
+  - title: "Sample 2"
+    url: /sample2/
+  - title: "Sample 3"
+    url: /sample3/
   - title: "Tags"
     url: /tags/

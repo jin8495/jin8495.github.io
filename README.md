@@ -6,8 +6,9 @@
   - [ ] SEO
   - [ ] Google Analytics
 ### - Sidebar
-  - [ ] Tags
-  - [ ] Category
+  - [x] Tags
+  - [x] Category
+    - The title of a page (\_page/categories/\*.md), will be the title of the category.
 ### - Header
   - [ ] Dropdown
     - https://github.com/taherbs/taherbs.github.io
