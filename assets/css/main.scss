@@ -8,7 +8,7 @@
 @import "minimal-mistakes"; // main partials
 
 .icon-skin {
-  color: $text-color;
+  color: $text-color !important;
 }
 .nav-icon-categories {
   margin-left: 0rem;
