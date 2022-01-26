@@ -31,7 +31,7 @@ main:
       - title: "Others-Test2"
         url: /others-test-2
 
-  - title: "Categories"
-    url: /categories/
-  - title: "Tags"
-    url: /tags/
+#  - title: "Categories"
+#    url: /categories/
+#  - title: "Tags"
+#    url: /tags/

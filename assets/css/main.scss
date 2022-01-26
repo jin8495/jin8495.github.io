@@ -6,3 +6,51 @@
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+.icon-skin {
+  color: $text-color;
+}
+.nav-icon-categories {
+  margin-left: 0rem;
+  margin-right: 0rem;
+  font-size:0.92rem;
+//  padding: 0rem;
+//  font-family: $sans-serif;
+//  font-weight: bold;
+  text-align: center;
+  color: $primary-color;
+  background-color: transparent;
+
+  border: 0;
+  outline: none;
+
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+
+  &:hover {
+    color: mix(#000, $primary-color, 25%);
+  }
+}
+.nav-icon-tags {
+  margin-left: -0.58rem;
+  margin-right: 0rem;
+  font-size:0.875rem;
+//  padding: 0rem;
+//  font-family: $sans-serif;
+//  font-weight: bold;
+  text-align: center;
+  color: $primary-color;
+  background-color: transparent;
+
+  border: 0;
+  outline: none;
+
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+
+  &:hover {
+    color: mix(#000, $primary-color, 25%);
+  }
+}
