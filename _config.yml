@@ -110,14 +110,27 @@ analytics:
 author:
   name             : "Hoyong Jin"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Computer Archi. and Deep Learning Engineer.<br/>
-                      Sport Climber."
+  bio              : 
+    - icon: "{{ fas fa-microchip }}"
+      description: "Computer Archi."
+    - icon: "{{ fas fa-brain }}"
+      description: "Deep Learning."
+    - icon: "{{ fas fa-mountain }}"
+      description: "Sport Climbing."
   location         : "Suwon, South Korea"
-#  email            : "jin8495@gmail.com"
   links:
     - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
+      icon: "fas fa-envelope"
       url: "mailto:jin8495@gmail.com"
+    - label: "GitHub"
+      icon: "fab fa-github"
+      url: "https://github.com/jin8495/"
+    - label: "Linked-in"
+      icon: "fab fa-linkedin"
+      url: "https://www.linkedin.com/in/jin8495/"
+    - label: "Instagram"
+      icon: "fab fa-instagram"
+      url: "https://instagram.com/rtds_beta/"
 #    - label: "Website"
 #      icon: "fas fa-fw fa-link"
 #      # url: "https://your-website.com"
@@ -127,35 +140,29 @@ author:
 #    - label: "Facebook"
 #      icon: "fab fa-fw fa-facebook-square"
 #      # url: "https://facebook.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/rtds_beta/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/jin8495/"
 
-# Site Footer
-footer:
-  links:
+# Site Footer (Not using)
+#footer:
+#  links:
 #    - label: "Twitter"
 #      icon: "fab fa-fw fa-twitter-square"
 #      # url:
 #    - label: "Facebook"
 #      icon: "fab fa-fw fa-facebook-square"
 #      # url:
-    - label: ""
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/rtds_beta/"
-    - label: ""
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/jin8495/"
+#    - label: ""
+#      icon: "fab fa-fw fa-instagram"
+#      url: "https://instagram.com/rtds_beta/"
+#    - label: ""
+#      icon: "fab fa-fw fa-github"
+#      url: "https://github.com/jin8495/"
 #    - label: "GitLab"
 #      icon: "fab fa-fw fa-gitlab"
 #      # url:
 #    - label: "Bitbucket"
 #      icon: "fab fa-fw fa-bitbucket"
 #      # url:
-  feed: false
+#  feed: false
 
 
 # Reading Files
