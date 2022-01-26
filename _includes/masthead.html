@@ -29,13 +29,13 @@
 
                 <ul class="dropdown-content">
                   {% for sublink in link.sublinks %}
-                    <a class="dropdown-item" href="{{ site.baseurl }}{{ sublink.url }}">    {{ sublink.title }}</a>
+                    <a class="dropdown-item" href="{{ sublink.url | relative_url }}">    {{ sublink.title }}</a>
                   {% endfor %}
                 </ul>
               </li>
             {% else %}
               <li class="masthead__menu-item">
-                <a href="{{ site.baseurl }}{{ link.url }}">{{ link.title }}</a>
+                <a href="{{ link.url | relative_url }}"{% if link.description %} title="{{ link.description }}"{% endif %}>{{ link.title }}</a>
               </li>
             {% endif %}
 <!--            <li class="masthead__menu-item">-->
@@ -44,12 +44,19 @@
           {%- endfor -%}
         </ul>
 
-        <!-- Navs out of masthead -->
+        <!-- Nav buttons out of masthead -->
         <button class="greedy-nav__toggle hidden" type="button">
           <span class="visually-hidden">{{ site.data.ui-text[site.locale].menu_label | default: "Toggle menu" }}</span>
           <div class="navicon"></div>
         </button>
         <ul class="hidden-links hidden"></ul>
+
+        <!-- Categories button -->
+<!--        <span style="color: $primary-color;">-->
+<!--          <a href="/categories/">-->
+<!--          <i class="fas fa-sitemap"></i>-->
+<!--        </a>-->
+<!--        </span>-->
 
         <!-- Magnifying glass -->
         {% if site.search == true %}

@@ -10,13 +10,11 @@
   - [x] Category
     - The title of a page (\_page/categories/\*.md), will be the title of the category.
 ### - Header
-  - [ ] Dropdown
-    - https://github.com/taherbs/taherbs.github.io
+  - [x] Dropdown
+    - ref: https://chaerim-kim.github.io/jekyll%20blog/Jekyll-2/
   - [ ] Categories
     - https://ansohxxn.github.io/blog/category/
 ### - etc
-  - [ ] Search
-    - A special page for search menu
   - [ ] Favicon
   - [ ] Portrait
-    - Outdoor stickers on the back of my laptop
+    - Idea1: Outdoor stickers on the back of my laptop
