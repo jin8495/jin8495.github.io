@@ -18,7 +18,7 @@
   - [x] Favicon
   - [ ] Portrait
     - Idea: Outdoor stickers on the back of my laptop
-  - [ ] Pagination
+  - [x] Pagination
     - Prev. and Next. within the same category
 -----------
 Ref:
