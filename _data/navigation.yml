@@ -2,11 +2,36 @@
 main:
   - title: "About"
     url: /about/
-  - title: "Sample 1"
-    url: /sample1/
-  - title: "Sample 2"
-    url: /sample2/
-  - title: "Sample 3"
-    url: /sample3/
+
+  - title: "SW"
+    sublinks:
+      - title: "SW-Test1"
+        url: /sw-test-1
+      - title: "SW-Test2"
+        url: /sw-test-2
+
+  - title: "HW"
+    sublinks:
+    - title: "HW-Test1"
+      url: /hw-test-1
+    - title: "HW-Test2"
+      url: /hw-test-2
+
+  - title: "Climbing"
+    sublinks:
+    - title: "Climbing-Test1"
+      url: /climbing-test-1
+    - title: "Climbing-Test2"
+      url: /climbing-test-2
+
+  - title: "Others"
+    sublinks:
+      - title: "Others-Test1"
+        url: /others-test-1
+      - title: "Others-Test2"
+        url: /others-test-2
+
+  - title: "Categories"
+    url: /categories/
   - title: "Tags"
     url: /tags/
