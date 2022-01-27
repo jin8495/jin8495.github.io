@@ -4,7 +4,7 @@
   - [x] Comments
   - [ ] Feed
   - [ ] SEO
-  - [ ] Google Analytics
+  - [x] Google Analytics
 ### - Sidebar
   - [x] Change the color of author links
   - [ ] When the window is small enough for author profile not fit in,
