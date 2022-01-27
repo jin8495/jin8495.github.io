@@ -6,21 +6,28 @@
   - [ ] SEO
   - [ ] Google Analytics
 ### - Sidebar
-  - [x] Tags
-  - [x] Category
-    - The title of a page (\_page/categories/\*.md), will be the title of the category.
-### - Header
-  - [x] Dropdown
-    - ref: https://chaerim-kim.github.io/jekyll%20blog/Jekyll-2/
+  - [x] Change the color of author links
+  - [ ] When the window is small enough for author profile not fit in,
+        author profile disappears
+### - Masthead
   - [x] Categories
+    - The title of a page (\_page/categories/\*.md), will be the title of the category.
     - https://ansohxxn.github.io/blog/category/
+  - [x] Dropdown of subcategories
+    - ref: https://chaerim-kim.github.io/jekyll%20blog/Jekyll-2/
+  - [x] Tags
+  - [ ] Dropdown of hidden nav
+    - [ ] Position of upper point is weird. minor modification
+    - [ ] When the categories are not fit in the window and hidden nav shows up,
+          all the categories goes into the nav dropdown
 ### - etc
-  - [ ] Favicon
-    - Not working. Need to figure out.
+  - [x] Favicon
+    - ~~Not working. Need to figure out.~~
   - [ ] Portrait
     - Idea: Outdoor stickers on the back of my laptop
-  - [x] Pagination
-    - Prev. and Next. within the same category
+  - [] Pagination
+    - [x] Prev. and Next. within the same category
+    - [ ] Prev. and Next. button with its post name
 -----------
 Ref:
 - https://ansohxxn.github.io/
