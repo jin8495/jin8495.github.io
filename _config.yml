@@ -321,29 +321,9 @@ defaults:
 
   # set categories by directory
   - scope:
-      path: _posts/sw-test-1
+      path: _posts/others/etc
       type: posts
     values:
+      toc: false
       category:
-        - SW Test 1
-  - scope:
-      path: _posts/sw-test-2
-      type: posts
-    values:
-      category:
-        - SW Test 2
-  - scope:
-      path: _posts/hw-test-1
-      type: posts
-    values:
-      category:
-        - HW Test 1
-  - scope:
-      path: _posts/hw-test-2
-      type: posts
-    values:
-      category:
-        - HW Test 2
-  # WIP
-
-
+        - Others etc.

@@ -5,31 +5,31 @@ main:
 
   - title: "SW"
     sublinks:
-      - title: "SW-Test1"
-        url: /sw-test-1
-      - title: "SW-Test2"
-        url: /sw-test-2
+      - title: "Not yet determined"
+        url: /sw/nyd
+      - title: "etc."
+        url: /sw/etc
 
   - title: "HW"
     sublinks:
-    - title: "HW-Test1"
-      url: /hw-test-1
-    - title: "HW-Test2"
-      url: /hw-test-2
+    - title: "Not yet determined"
+      url: /hw/nyd
+    - title: "etc."
+      url: /hw/etc
 
   - title: "Climbing"
     sublinks:
-    - title: "Climbing-Test1"
-      url: /climbing-test-1
-    - title: "Climbing-Test2"
-      url: /climbing-test-2
+    - title: "Not yet determined"
+      url: /climbing/nyd
+    - title: "etc."
+      url: /climbing/etc
 
   - title: "Others"
     sublinks:
-      - title: "Others-Test1"
-        url: /others-test-1
-      - title: "Others-Test2"
-        url: /others-test-2
+      - title: "Not yet determined"
+        url: /others/nyd
+      - title: "etc."
+        url: /others/etc
 
 #  - title: "Categories"
 #    url: /categories/

@@ -1,4 +1,4 @@
-{%- for post in site.categories[page.title] -%}
+{%- for post in site.categories[page.cat] -%}
   {%- unless post.hidden -%}
     {% include archive-single.html %}
   {%- endunless -%}
