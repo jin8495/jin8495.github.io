@@ -76,7 +76,8 @@ google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
 
-# SEO Related
+# SEO Related (Not using)
+## I used html files instead of html meta description
 google_site_verification :
 bing_site_verification   :
 naver_site_verification  :

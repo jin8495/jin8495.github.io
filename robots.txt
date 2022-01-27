@@ -1,4 +1,4 @@
-iUser-agent: *
+User-agent: *
 Allow: /
 
 Sitemap: https://jin8495.github.io/sitemap.xml
