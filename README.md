@@ -9,6 +9,8 @@
   - [x] Change the color of author links
   - [ ] When the window is small enough for author profile not fit in,
         author profile disappears
+  - [ ] Width of the main body is too wide, I guess...
+        It squeezes the author profile too much
 ### - Masthead
   - [x] Categories
     - The title of a page (\_page/categories/\*.md), will be the title of the category.
