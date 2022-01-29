@@ -19,8 +19,8 @@ main:
 
   - title: "Climbing"
     sublinks:
-    - title: "Not yet determined"
-      url: /climbing/nyd
+    - title: "Bouldering"
+      url: /climbing/bouldering
     - title: "etc."
       url: /climbing/etc
 

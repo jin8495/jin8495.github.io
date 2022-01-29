@@ -320,11 +320,25 @@ defaults:
       related: true
       toc: true
 
+  # images
+#  - scope:
+#      path: "assets/images"
+#    values:
+#      image: true
+
+
   # set categories by directory
   - scope:
-      path: _posts/others/etc
+      path: "_posts/climbing/bouldering"
+      type: posts
+    values:
+      toc: true
+      category:
+        - "Climbing Bouldering"
+  - scope:
+      path: "_posts/others/etc"
       type: posts
     values:
       toc: false
       category:
-        - Others etc.
+        - "Others etc."

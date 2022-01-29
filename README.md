@@ -25,11 +25,37 @@
     - ~~Not working. Need to figure out.~~
   - [ ] Portrait
     - Idea: Outdoor stickers on the back of my laptop
-  - [] Pagination
+  - [ ] Pagination
     - [x] Prev. and Next. within the same category
     - [ ] Prev. and Next. button with its post name
+  - [ ] Improved tag search
+    - [ ] Implement "and", "or", "not" operations for tag search
 -----------
 Ref:
 - https://ansohxxn.github.io/
 - https://chaerim-kim.github.io/
 - https://eona1301.github.io/
+
+
+----------------
+### 블로그에서 다룰 내용
+1. 컴퓨터 구조 및 시스템
+- [ ] 사파리 연구 그룹에서 진행하는 컴퓨터 구조 강의 정리
+- [ ] 메모리 시스템 교재 정리
+- [ ] NPU
+2. 심층신경망과 딥러닝
+- [ ] DNN 모델 정리
+3. 소프트웨어 및 하드웨어 개발 플로우
+- [ ] 리눅스 시스템
+- [ ] RTL 개발 플로우 정리
+4. 클라이밍
+- [ ] 장비 사용법과 등반 시스템
+- [ ] 트레이닝 관련 자료 정리
+- [ ] 부상 관리 자료
+- [ ] 암장 자료
+5. 기타
+
+
+이거 다 할 수 있을라나...
+-----
+
