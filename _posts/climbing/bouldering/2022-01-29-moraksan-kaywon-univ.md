@@ -79,8 +79,8 @@ tags:
 
 ----------
 # 참고
-- [출처 네이버블로그-Work less, climb more](https://m.blog.naver.com/andgigs/221114294172). 
-- [출처 유튜브-무호TV](https://youtu.be/OuRSvQfz6_I). 
-- [출처 네이버블로그-도발소녀](https://blog.naver.com/sclty/221906034591). 
+- [네이버블로그-Work less, Climb more](https://m.blog.naver.com/andgigs/221114294172). 
+- [유튜브-무호TV](https://youtu.be/OuRSvQfz6_I). 
+- [네이버블로그-도발소녀](https://blog.naver.com/sclty/221906034591). 
 
   
