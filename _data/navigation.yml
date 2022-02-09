@@ -26,8 +26,8 @@ main:
 
   - title: "Others"
     sublinks:
-      - title: "Not yet determined"
-        url: /others/nyd
+      - title: "Books"
+        url: /others/books
       - title: "etc."
         url: /others/etc
 

@@ -336,6 +336,13 @@ defaults:
       category:
         - "Climbing Bouldering"
   - scope:
+      path: "_posts/others/books"
+      type: posts
+    values:
+      toc: false
+      category:
+        - "Others Books"
+  - scope:
       path: "_posts/others/etc"
       type: posts
     values:
