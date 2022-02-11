@@ -244,6 +244,7 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-relative-links
 
 # mimic GitHub Pages with --safe
 whitelist:
@@ -252,7 +253,12 @@ whitelist:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-relative-links
 
+# jekyll-relative-links
+relative_links:
+  enabled:      true
+  collections:  false
 
 # Archives
 #  Type
@@ -319,6 +325,7 @@ defaults:
       share: false
       related: true
       toc: true
+      toc_sticky: false
 
   # images
 #  - scope:
