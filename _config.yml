@@ -341,18 +341,18 @@ defaults:
     values:
       toc: true
       category:
-        - "Climbing Bouldering"
+        - "Climbing-Bouldering"
   - scope:
       path: "_posts/others/books"
       type: posts
     values:
       toc: false
       category:
-        - "Others Books"
+        - "Others-Books"
   - scope:
       path: "_posts/others/etc"
       type: posts
     values:
       toc: false
       category:
-        - "Others etc."
+        - "Others-etc."
