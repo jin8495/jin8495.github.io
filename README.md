@@ -4,7 +4,13 @@
   - [x] Comments
   - [ ] Feed
   - [ ] SEO
+    - Google Search Console couldn't read my sitemap.xml
+      - [ ] https://julynine2.tistory.com/entry/Google-Search-Console-Sitemap-couldnt-fetch
+    - I think Naver Webmaster couldn't read neither
+      - [ ] https://searchadvisor.naver.com/guide
   - [x] Google Analytics
+### - Posts
+  - [ ] TOC is not floating around. Need to be fixed.
 ### - Sidebar
   - [x] Change the color of author links
   - [ ] When the window is small enough for author profile not fit in,
@@ -47,6 +53,7 @@ Ref:
 - [ ] NPU
 2. 심층신경망과 딥러닝
 - [ ] DNN 모델 정리
+- [ ] Pytorch 프레임워크 정리
 3. 소프트웨어 및 하드웨어 개발 플로우
 - [ ] 리눅스 시스템
 - [ ] RTL 개발 플로우 정리
@@ -56,6 +63,7 @@ Ref:
 - [ ] 부상 관리 자료
 - [ ] 암장 자료
 5. 기타
+- [ ] 책 리뷰
 
 
 이거 다 할 수 있을라나...
