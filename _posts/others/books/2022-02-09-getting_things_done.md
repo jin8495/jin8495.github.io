@@ -3,7 +3,7 @@ title: "쏟아지는 일 완벽하게 해내는 법: 일을 쌓아두지 않고 
 tags:
   - 책
   - 리뷰
-  - 할 일 관리
+  - 자기계발
   - 생산성
 toc: true
 toc_sticky: false
