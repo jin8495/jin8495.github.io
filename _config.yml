@@ -336,6 +336,13 @@ defaults:
 
   # set categories by directory
   - scope:
+      path: "_posts/hw/gpgpu"
+      type: posts
+    values:
+      toc: true
+      category:
+        - "HW-GPGPU"
+  - scope:
       path: "_posts/climbing/bouldering"
       type: posts
     values:

@@ -12,8 +12,8 @@ main:
 
   - title: "HW"
     sublinks:
-    - title: "Not yet determined"
-      url: /hw/nyd
+    - title: "GPGPU"
+      url: /hw/gpgpu
     - title: "etc."
       url: /hw/etc
 
