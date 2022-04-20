@@ -1,5 +1,5 @@
 ---
-title: "Series) GP-GPU Archi. Intro."
+title: "GP-GPU 구조 시리즈: 시작하기 전"
 tags:
   - 컴퓨터구조
   - GPGPU
