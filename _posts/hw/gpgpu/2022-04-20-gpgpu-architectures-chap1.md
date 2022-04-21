@@ -16,9 +16,10 @@ GP-GPU는 머신러닝 어플리케이션 외에도 데이터 간의 의존성�
 다른 이야기이긴 하지만, CPU와 GPU와 같은 General-Purpose processor의 한계(Energy, Frequency, Heat 등)가 뚜렷해지고 있기 때문에
   NPU, TPU와 같은 특정 어플리케이션만을 타겟으로 하는 Accelerator들의 연구도 활발히 이루어지고 있다.
 
-# GP-GPU Hardware Basics
 
-## GP-GPU와 CPU의 관계
+# GPU Hardware Basics
+
+## GPU와 CPU의 관계
 
 기본적으로 GPU는 스스로 동작하는 하드웨어가 아니다.
 가속기의 개념으로 사용이 되는 하드웨어이기 때문에 CPU의 제어가 필요하다.
@@ -30,10 +31,13 @@ CPU와 GPU의 역할이 나뉘어진 이유 중 하나로, 연산 가속의 처�
 
 아래 그림은 CPU와 GPU가 포함된 일반적인 컴퓨터 시스템의 Abstract diagram이다.
 
-**TODO: Figure 1.1.과 같은 그림 첨부하기. (a)와 (b) 위치 바꿔서 새로 그리기.**
+{% assign img_path = "/assets/images/hw/gpgpu/2022-04-20-gpgpu-architectures-chap1" %}
+|<a name="Figure 1">![alt GPU 컴퓨팅 시스템 분류]({{ img_path }}-fig1.png)</a>|
+|:-------|
+|Figure 1. CPU가 포함된 GPU 컴퓨팅 시스템 분류|
 
 좌측(a)과 같은 구조는 휴대폰과 같은 모바일 시스템에서 찾아볼 수 있고,
-  우측(b)과 같은 구조는 PC나 서버와 같은 시스템에서 찾아볼 수가 있고,
+  우측(b)과 같은 구조는 PC나 서버와 같은 시스템에서 찾아볼 수가 있다.
   
 ### Integrated GPU
 
@@ -80,7 +84,37 @@ Integrated GPU는 위에서 언급한 바와 같이 모바일 시스템에서 �
 
 Discrete GPU 구조에서는 CPU와 GPU가 서로 다른 DRAM technology를 사용하기 때문에, 각 프로세서에 좀 더 특화된 메모리 인터페이스를 사용한다.
 CPU의 경우 Bandwidth보다는 Latency가 더 중요하기 때문에 DDR을 사용하며, GPU의 경우 Latency보다 Bandwidth가 더 중요하기 때문에 GDDR을 사용한다.
-GPU가 Bandwidth를 중요시하는 이유는 조금 뒤에 자세히 설명하도록 하겠다.
+GPU가 Bandwidth를 중요시하는 이유는 GPU의 내부 구조에 대해서 이야기하면서 자세히 설명하도록 하겠다.
+
+## GPU의 동작 플로우
+
+위에서 언급했다시피, GPU는 CPU의 도움을 받아야 효과적으로 프로그램을 구동할 수 있다.
+일반적으로 GPU 프로그램이 구동하는 플로우를 살펴보자.
+
+어플리케이션은 CPU를 이용해 동작하는 부분과 GPU를 이용해 동작하는 부분으로 나뉜다.
+1. 먼저 CPU를 이용해 어플리케이션을 구동하다가, CPU는 API를 이용해 GPU에서 구동할 데이터들을 차례차례 Host memory에서 Device memory로 옮긴다.
+2. 모든 데이터들이 다 옮겨졌으면 GPU 연산이 정의된 함수인 커널이 호출되고, GPU는 커널에 정의된 대로 Device memory 내의 데이터들을 연산한다.
+3. 연산이 끝났으면 커널이 종료되고 CPU는 다시 API를 이용해 연산이 끝난 데이터를 Device memory에서 Host memory로 옮긴다.
+
+위와 같은 방식이 가장 일반적이지만, 프로그래머가 직접 GPU 연산을 수행할 데이터를 옮겨줘야하기 때문에,
+  이러한 번거로움을 덜고자 NVIDIA의 Pascal 마이크로아키텍처부터는 Unified memory란 것을 지원한다.
+Unified memory에서는 CPU와 GPU가 동일한 Virtual memory address space를 사용하기 때문에 프로그래머가 직접 데이터를 옮기지 않아도 된다.
+하지만 Unified memory를 사용하게 되면 프로그램이 동작하는 동안, Device memory에 존재하지 않는 데이터를 필요한 때에 가져오기 때문에 성능 저하가 존재한다.
+
+## GPU 내부 구조
+
+현대의 GPU는 수 많은 코어로 이루어져있다. NVIDIA는 이러한 코어들을 Streaming Multiprocessor (SM)라고 부르고, AMD는 이를 Compute Unit이라 부른다.
+
+각 코어는 Single-Instruction Multiple-Thread (SIMT) 방식으로 프로그램을 실행한다.
+이는 Flynn's taxonomy의 Single-Instruction Multiple-Data (SIMD)와 유사한 방식이지만, 데이터가 아닌 쓰레드에 초점을 두고 있다.
+SM은 수 천개의 쓰레드를 구동하며, 동일한 SM 내의 쓰레드들은 Scratchpad memory를 통해 통신한다. 또한 barrier operation이 있어, 이를 가지고 synchronization을 한다.
+각 SM은 L1-Insturction/Data cache를 갖고 있는 덕분에, 하위 계층 메모리 시스템(L2 cache, DRAM 등)으로 오고가는 메모리 트래픽의 양이 줄어
+  코어에 공급되는 데이터 양을 어느정도 유지할 수 있다.
+
+TODO: 여기서부터 다음에 고
+
+
+
 
 
 
