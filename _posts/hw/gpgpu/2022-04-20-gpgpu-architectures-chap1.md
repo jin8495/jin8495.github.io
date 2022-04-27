@@ -14,7 +14,7 @@ GP-GPU를 이용하면, 엄청난 양의 데이터를 병렬로 처리가 가능
 GP-GPU는 머신러닝 어플리케이션 외에도 데이터 간의 의존성이 없고, 데이터 플로우 역시 단순하다면 엄청난 병렬 처리 성능을 활용해 압도적인 속도로 연산이 가능하다.
 
 다른 이야기이긴 하지만, CPU와 GPU와 같은 General-Purpose processor의 한계(energy, frequency, heat 등)가 뚜렷해지고 있기 때문에
-  NPU, TPU와 같은 특정 어플리케이션만을 타겟으로 하는 Accelerator들의 연구도 활발히 이루어지고 있다.
+  NPU, TPU와 같은 특정 어플리케이션만을 타겟으로 하는 accelerator들의 연구도 활발히 이루어지고 있다.
 
 ---
 
@@ -68,18 +68,18 @@ CPU와 GPU의 역할이 나뉘어진 이유 중 하나로, 연산 가속의 처�
   
 ### Integrated GPU
 
-좌측(a)의 구조를 Integrated GPU라 부른다. 여기서는 CPU와 GPU가 하나의 DRAM 메모리 공간을 공유한다.
+좌측(a)의 구조를 integrated GPU라 부른다. 여기서는 CPU와 GPU가 하나의 DRAM 메모리 공간을 공유한다.
 그런 이유로, 둘은 동일한 메모리 인터페이스를 사용할 수 밖에 없다.
 Integrated GPU는 위에서 언급한 바와 같이 모바일 시스템에서 주로 찾아볼 수 있기 때문에 저전력이 중요하다.
-그래서 대부분의 Integrated GPU는 전력 소모가 적은 LPDDR 메모리를 사용한다.
+그래서 대부분의 integrated GPU는 전력 소모가 적은 LPDDR 메모리를 사용한다.
 
 ### Discrete GPU
 
-우측(b)의 구조를 Discrete GPU라 부르는데, 여기서는 CPU의 메모리와 GPU의 메모리가 분리되어 있다.
-일반적으로 CPU의 메모리는 Host memory 또는 System memory라 부르고, GPU의 메모리는 Device memory라 부른다.
+우측(b)의 구조를 discrete GPU라 부르는데, 여기서는 CPU의 메모리와 GPU의 메모리가 분리되어 있다.
+일반적으로 CPU의 메모리는 host memory 또는 system memory라 부르고, GPU의 메모리는 Device memory라 부른다.
 
 리눅스 기반 시스템에서 NVIDIA GPU를 사용할 때, `$ nvidia-smi` 커맨드를 입력하면 아래와 같은 출력을 얻을 수가 있다.
-여기서 나타나는 메모리 용량이 각 GPU의 Device memory 용량을 의미한다.
+여기서 나타나는 메모리 용량이 각 GPU의 device memory 용량을 의미한다.
 
 ```
 +-----------------------------------------------------------------------------+
@@ -110,7 +110,7 @@ Integrated GPU는 위에서 언급한 바와 같이 모바일 시스템에서 �
 ```
 
 Discrete GPU 구조에서는 CPU와 GPU가 서로 다른 DRAM technology를 사용하기 때문에, 각 프로세서에 좀 더 특화된 메모리 인터페이스를 사용한다.
-CPU의 경우 bandwidth보다는 latency가 더 중요하기 때문에 ddr을 사용하며, gpu의 경우 latency보다 bandwidth가 더 중요하기 때문에 gddr을 사용한다.
+CPU의 경우 bandwidth보다는 latency가 더 중요하기 때문에 DDR을 사용하며, GPU의 경우 latency보다 bandwidth가 더 중요하기 때문에 GDDR을 사용한다.
 GPU가 bandwidth를 중요시하는 이유는 GPU의 내부 구조에 대해서 이야기하면서 자세히 설명하도록 하겠다.
 
 ## GPU의 동작 플로우
