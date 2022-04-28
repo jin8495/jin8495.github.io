@@ -14,7 +14,7 @@ GP-GPU를 이용하면, 엄청난 양의 데이터를 병렬로 처리가 가능
 GP-GPU는 머신러닝 어플리케이션 외에도 데이터 간의 의존성이 없고, 데이터 플로우 역시 단순하다면 엄청난 병렬 처리 성능을 활용해 압도적인 속도로 연산이 가능하다.
 
 다른 이야기이긴 하지만, CPU와 GPU와 같은 General-Purpose processor의 한계(energy, frequency, heat 등)가 뚜렷해지고 있기 때문에
-  NPU, TPU와 같은 특정 어플리케이션만을 타겟으로 하는 accelerator들의 연구도 활발히 이루어지고 있다.
+  NPU, TPU와 같은 특정 어플리케이션만을 타겟으로 하는 가속기들의 연구도 활발히 이루어지고 있다.
 
 ---
 
@@ -26,7 +26,7 @@ GP-GPU는 머신러닝 어플리케이션 외에도 데이터 간의 의존성�
 초창기 그래픽 카드는 1981년도의 IBM Monochrome Display Adapter (MDA)에서 시작됐다.
 IBM MDA는 텍스트 렌더링 용도로만 사용됐지만, 이후 그래픽 카드는 2D와 3D 그래픽의 연산 가속을 위해 발전했다.
 
-NVIDIA GeForce 256과 같은 초창기 3D 그래픽 카드는 상당부분 Fixed-fucntion을 가속하기 위해 사용됐다.
+NVIDIA GeForce 256과 같은 초창기 3D 그래픽 카드는 상당부분 fixed-fucntion을 가속하기 위해 사용됐다.
 이후 NVIDIA는 2001년, GeForce 3에 vertex shader와 pixel shader와 같은 프로그래밍이 가능한 하드웨어를 추가해 3D 그래픽 연산을 좀 더 자유롭게 만들었다.
 Vertex shader와 pixel shader의 텍스쳐와 쉐이더 부분을 행렬로 바꿔치기 한다면 선형대수 연산이 가능했기 때문에,
   학계에서는 이를 이용해 다양한 연산들을 가속했다.
@@ -76,7 +76,7 @@ Integrated GPU는 위에서 언급한 바와 같이 모바일 시스템에서 �
 ### Discrete GPU
 
 우측(b)의 구조를 discrete GPU라 부르는데, 여기서는 CPU의 메모리와 GPU의 메모리가 분리되어 있다.
-일반적으로 CPU의 메모리는 host memory 또는 system memory라 부르고, GPU의 메모리는 Device memory라 부른다.
+일반적으로 CPU의 메모리는 host memory 또는 system memory라 부르고, GPU의 메모리는 device memory라 부른다.
 
 리눅스 기반 시스템에서 NVIDIA GPU를 사용할 때, `$ nvidia-smi` 커맨드를 입력하면 아래와 같은 출력을 얻을 수가 있다.
 여기서 나타나는 메모리 용량이 각 GPU의 device memory 용량을 의미한다.
@@ -126,14 +126,14 @@ GPU가 bandwidth를 중요시하는 이유는 GPU의 내부 구조에 대해서 
 
 [Figure 2.](#Figure 2)는 GPU 프로그램의 동작 단위인 커널의 구동 과정을 보여준다. 동작을 자세히 살펴보도록 하겠다.
 
-1. 먼저 CPU를 이용해 어플리케이션을 구동하다가, CPU는 API를 이용해 GPU에서 구동할 데이터들을 차례차례 Host memory에서 Device memory로 옮긴다.
-2. 모든 데이터들이 다 옮겨졌으면 GPU 연산이 정의된 함수인 커널이 호출되고, GPU는 커널에 정의된 대로 Device memory 내의 데이터들을 연산한다.
-3. 연산이 끝났으면 커널이 종료되고 CPU는 다시 API를 이용해 연산이 끝난 데이터를 Device memory에서 Host memory로 옮긴다.
+1. 먼저 CPU를 이용해 어플리케이션을 구동하다가, CPU는 API를 이용해 GPU에서 구동할 데이터들을 차례차례 host memory에서 device memory로 옮긴다.
+2. 모든 데이터들이 다 옮겨졌으면 GPU 연산이 정의된 함수인 커널이 호출되고, GPU는 커널에 정의된 대로 device memory 내의 데이터들을 연산한다.
+3. 연산이 끝났으면 커널이 종료되고 CPU는 다시 API를 이용해 연산이 끝난 데이터를 device memory에서 host memory로 옮긴다.
 
 위와 같은 방식이 가장 일반적이지만, 프로그래머가 직접 GPU 연산을 수행할 데이터를 옮겨줘야하기 때문에,
   이러한 번거로움을 덜고자 NVIDIA의 Pascal 마이크로아키텍처부터는 Unified memory란 것을 지원한다.
 Unified memory에서는 CPU와 GPU가 동일한 가상 메모리 주소 공간을 사용하기 때문에 프로그래머가 직접 데이터를 옮기지 않아도 된다.
-하지만 Unified memory를 사용하게 되면 프로그램이 동작하는 동안, Device memory에 존재하지 않는 데이터를 필요한 때에 가져오기 때문에 성능 저하가 존재한다.
+하지만 Unified memory를 사용하게 되면 프로그램이 동작하는 동안, device memory에 존재하지 않는 데이터를 필요한 때에 가져오기 때문에 성능 저하가 존재한다.
 
 ## GPU 내부 구조
 
@@ -142,10 +142,10 @@ Unified memory에서는 CPU와 GPU가 동일한 가상 메모리 주소 공간�
 각 코어는 Single-Instruction Multiple-Thread (SIMT) 방식으로 프로그램을 실행한다.
 이는 Flynn's taxonomy의 Single-Instruction Multiple-Data (SIMD)와 유사한 방식이지만, 데이터에 초점을 맞춘 SIMD와 달리, SIMT는 쓰레드에 초점을 두고 있다.
 
-SM은 수 천개의 쓰레드를 구동하며, 동일한 SM 내의 쓰레드들은 scratchpad memory를 통해 통신한다. 또한 barrier operation이 있어, 이를 가지고 synchronization을 한다.
+GPU는 수 천개의 쓰레드를 구동하며, 동일한 SM 내의 쓰레드들은 scratchpad memory를 통해 통신한다. 또한 barrier operation이 있어, 이를 가지고 synchronization을 한다.
 각 SM은 L1-Insturction/Data cache를 갖고 있는 덕분에, 하위 계층 메모리 시스템(L2 cache, DRAM 등)으로 오고가는 메모리 트래픽의 양이 줄어
   코어에 공급되는 데이터 양을 어느정도 유지할 수 있다.
-또한 많은 양의 쓰레드가 SM 내애서 연산을 하고 있기 때문에, 하위 계층 메모리를 접근하면서 생기는 access latency는 어느정도 숨겨지게 된다.
+또한 많은 양의 쓰레드가 SM 내에서 연산을 하고 있기 때문에, 하위 계층 메모리를 접근하면서 생기는 access latency는 어느정도 숨겨지게 된다.
 이런 현상을 latency hiding이라 하는데, latency hiding 덕분에 GPU는 latency보다 bandwidth가 성능을 결정짓는 중요한 요인이 되었다.
 
 <a name="Figure 3"></a>
@@ -179,5 +179,10 @@ CUDA 프로그램에서 쓰레드는 소프트웨어 적으로는 thread block�
 현재까지 나온 용어들 중, 아직 설명하지 않은 용어들도 추후에 설명하도록 할 것이다.
 
 
+# 참고자료
+
+- T. M. Aamodt, W. W. L. Fung, and T. G. Rogers, General-purpose graphics processor architectures. San Rafael, California: Morgan & Claypool Publishers, 2018. doi: 10.2200/S00848ED1V01Y201804CAC044.
+- M. Khairy, J. Akshay, T. Aamodt, and T. G. Rogers, “Exploring Modern GPU Memory System Design Challenges through Accurate Modeling,” 2020 ACM/IEEE 47th Annual International Symposium on Computer Architecture (ISCA), pp. 473–486, May 2020, doi: 10.1109/ISCA45697.2020.00047.
+- [\[GPGPU Series 3\] GPU Architecture Overview – MKBlog](https://mkblog.co.kr/gpgpu-series-3-gpu-architecture-overview/)
 
 
