@@ -34,8 +34,8 @@ tags:
 ## 가는 길
 
 
-{% assign img_path = "/assets/images/climbing/bouldering/2022-01-29-moraksan-kaywon" %}
-|<a name="개념도">![alt 개념도]({{ img_path }}-map.jpg){: width="800"}</a>|
+{% assign img_path_approach = "/assets/images/climbing/bouldering/2022-01-29-moraksan-kaywon" %}
+|<a name="개념도">![alt 개념도]({{ img_path_approach }}-map.jpg){: width="800"}</a>|
 |:-----:|
 |위 그림은 [고릴라 클라이밍](https://www.instagram.com/gorillaclimbing/) 센터장님께서 제작하셨다고 한다.|
 
@@ -45,7 +45,7 @@ tags:
 장령농원은 사유지라 절대 들어가서는 안 된다.
 
 
-|<a name="어프로치0">![alt 어프로치00]({{ img_path }}-access-00.jpg){: width="500"}</a>|
+|<a name="어프로치0">![alt 어프로치00]({{ img_path_approach }}-access-00.jpg){: width="500"}</a>|
 |:--------:|
 |장령농원을 처음 만나면 보이는 세 갈래 길이다. 가장 좌측 길로 올라가면 된다.|
 
@@ -55,7 +55,7 @@ tags:
 사당을 지나치면 장령농원 펜스가 나타난다. 펜스를 우측에 끼고 쭉 따라간다.
 
 
-|<a name="어프로치1">![alt 어프로치01]({{ img_path }}-access-01.jpg){: width="400"}</a>|
+|<a name="어프로치1">![alt 어프로치01]({{ img_path_approach }}-access-01.jpg){: width="400"}</a>|
 |:-----:|
 |이정표가 되어줄 게이트웨이 볼더. 게이트웨이 볼더의 우측 길이 등산/하산로이다.<br>그림에서 5시 방향으로 가면 댑볼더가 나타난다.<br>7시 방향으로 가면 개념도의 바위들이 모두 모여있다.|
 
@@ -63,7 +63,7 @@ tags:
 점차 바위가 많아지다가 위와 같은 바위가 보이면 도착이다.
 이 바위가 게이트웨이 볼더이므로 이정표 삼아 이동하면 된다.
 
-|<a name="어프로치2">![alt 어프로치02]({{ img_path }}-access-02.jpg){: width="400"}</a>|
+|<a name="어프로치2">![alt 어프로치02]({{ img_path_approach }}-access-02.jpg){: width="400"}</a>|
 |:-----:|
 |게이트웨이 볼더를 등지고 좌측으로 가면 개념도의 바위들이 모두 모인 곳이 나타난다.<br>그림 상의 번호 순서대로 1번은 모비딕볼더, 2번은 탱크볼더, 3번은 마당볼더이다.|
 
@@ -88,7 +88,9 @@ tags:
 상당히 추운 날이었음에도 불구하고, 핫팩을 무더기로 챙겨간 덕분에 잘 버틸 수 있었다.
 신발에 2개, 암벽화에 2개, 양손에 2개씩 핫팩을 챙긴 상태로 어깨부터 손목까지 워밍업을 시작했다.
 
-|<a name="말랐으면">![alt 댑볼더 말랐으면00]({{ img_path }}-wanna_be_skinny.jpg){: width="240"}</a>|
+{% assign img_path_00 = "/assets/images/climbing/bouldering/2022-01-30-moraksan-kaywon" %}
+
+|<a name="말랐으면">![alt 댑볼더 말랐으면00]({{ img_path_00 }}-wanna_be_skinny.jpg){: width="240"}</a>|
 |:------:|
 |모락산 댑볼더 말랐으면(V2)|
 
@@ -100,7 +102,7 @@ tags:
 거의 완등 직전까지 쳤는데 오른발에 힐훅을 건다는 걸 잊어버려서 억지로 몸을 끌어올리다가 왼손이 터져버렸다.
 그래도 대강 어느 포인트에서 어떤 걸 신경 써야 하는지 파악했기 때문에 다음엔 깰 수 있을 것 같다.
 
-|<a name="스쿨오브락">![alt 댑볼더 스쿨오브락]({{ img_path }}-school_of_rock.jpg){: width="240"}</a>|
+|<a name="스쿨오브락">![alt 댑볼더 스쿨오브락]({{ img_path_00 }}-school_of_rock.jpg){: width="240"}</a>|
 |:-----:|
 |모락산 댑볼더 스쿨오브락(V6)|
 
