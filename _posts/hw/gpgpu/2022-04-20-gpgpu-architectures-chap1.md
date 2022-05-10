@@ -167,9 +167,9 @@ SM은 수 천개의 쓰레드를 구동하며, 동일한 SM 내의 쓰레드들�
 
 ### GPU의 연산 코어
 
-CUDA 프로그램에서 쓰레드는 소프트웨어 적으로는 thread block이란 단위로 묶이지만, 하드웨어 적으로는 워프란 단위로 묶이게 된다.
-따라서 thread block에 맞게 할당된 쓰레드들을 워프 단위로 변환해, 각 SM으로 스케쥴링하는 하드웨어가 Thread Block Scheduler이다.
-할당된 워프들은 SM 내에서 또다시 Warp Scheduler에 의해 스케쥴링 되어 실제 연산을 시작하게 된다.
+CUDA 프로그램에서 쓰레드는 소프트웨어 적으로는 thread block이란 단위로 묶이지만, 하드웨어 적으로는 warp란 단위로 묶이게 된다.
+따라서 thread block에 할당된 쓰레드들을 warp 단위로 변환해, 각 SM으로 스케쥴링하는 하드웨어가 Thread Block Scheduler이다.
+할당된 warp들은 SM 내에서 또다시 Warp Scheduler에 의해 스케쥴링 되어 실제 연산을 시작하게 된다.
 
 
 -----
@@ -179,5 +179,7 @@ CUDA 프로그램에서 쓰레드는 소프트웨어 적으로는 thread block�
 현재까지 나온 용어들 중, 아직 설명하지 않은 용어들도 추후에 설명하도록 할 것이다.
 
 
+# 참고 자료
 
-
+- T. M. Aamodt et al., General-purpose graphics processor architectures. Morgan & Claypool Publishers, 2018.
+- [\[GPGPU Series 3\] GPU Architecture Overview – MKBlog](https://mkblog.co.kr/gpgpu-series-3-gpu-architecture-overview/)
