@@ -273,7 +273,7 @@ CUDA 프로그래밍 모델은 프로그래밍 난이도를 낮추면서 하드�
 
 # 참고 자료
 
-- T. M. Aamodt et al., General-purpose graphics processor architectures. Morgan & Claypool Publishers, 2018.
+- T. M. Aamodt, W. W. L. Fung, and T. G. Rogers, General-purpose graphics processor architectures. San Rafael, California: Morgan & Claypool Publishers, 2018. doi: 10.2200/S00848ED1V01Y201804CAC044.
 - [Programming Guide :: CUDA Toolkit Documentation](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html)
 - [CUDA Refresher: The CUDA Programming Model \| NVIDIA Technical Blog](https://developer.nvidia.com/blog/cuda-refresher-cuda-programming-model/)
 - [\[NVIDIA GPU\] Memory 종류 – MKBlog](https://mkblog.co.kr/nvidia-gpu-memory-types/)
