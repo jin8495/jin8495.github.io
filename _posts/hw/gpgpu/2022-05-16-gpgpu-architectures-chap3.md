@@ -68,7 +68,8 @@ SIMT stack을 사용하면 두 가지 이슈를 간단히 해결할 수 있다.
 
 실제 SIMT stack에서는 특수한 instruction을 이용해 관리되지만, 이번 글에서는 하드웨어만으로 관리되는 SIMT stack을 소개하고자 한다.
 
-아래 코드는 do-while loop 안에 두 개의 nested branch로 이루어진 CUDA C 코드이다. 이를 컴파일에 PTX Assembly로 만든 것이 그 아래 코드이다.
+아래의 첫 번째 코드는 do-while loop 안에 두 개의 nested branch로 이루어진 CUDA C 코드이다.
+두 번째 코드는 CUDA C코드를 컴파일해서 PTX Assembly로 만든 것이다.
 
 ```c++
 do {
@@ -76,7 +77,7 @@ do {
   t2 = t1 + i;
   t3 = data1[t2];
   t4 = 0;
-  if ( t3 != t3 ) {
+  if ( t3 != t4 ) {
     t5 = data2[t2];     // B
     if ( t5 != t4 ) {
       x += 1;           // C
@@ -109,6 +110,65 @@ G:    add.u32         i, i, 1;
       setp.le.u32     p3, i, N;
 @p3   bra             A;
 ```
+
+|<a name="Figure 2">![alt SIMT Stack의 동작 예시]({{ img_path }}-fig2.jpg)</a>|
+|:------|
+|Figure 2. CUDA C 코드 예시에 해당하는 SIMT Stack 동작|
+
+이 코드를 SIMT stack의 동작과 비교하면 [Figure 2.](#Figure 2)와 같다.
+그림 예시에서는 한 warp의 쓰레드 개수는 4개라고 가정한다.
+
+- (a)는 CUDA C 코드의 branch들의 control flow를 의미한다.
+그림 내의 각 블록의 알파벳은 CUDA C 코드의 알파벳과 동일한데,
+  branch divergence가 일어난 뒤 실행되는 부분이라고 보면 된다.
+- (c~e)는 SIMT stack이 divergence를 거치면서 어떻게 변하는지 나타낸 그림이다.
+Branch들이 합쳐지는 Return/Reconvergen 포인트를 의미하는 Ret./Reconv. PC는
+  분기된 branch들이 합쳐지는 위치를 나타낸다.
+Next PC는 warp의 다음 program counter를 나타내며, 곧 실행될 블록이다.
+Active mask는 해당 블록에서 어떠한 쓰레드 (branch의 control flow에 속하는)만 동작할 것인지를 나타내는 블록이다.
+TOS는 top of stack의 줄임말로 현재 stack의 맨 위를 나타내는 포인터이다.
+- (b)는 SIMT stack에 따라 실제 warp 내의 쓰레드들이 동작하는 과정을 시간 순으로 나타낸 그림이다.
+비어있는 화살표는 동작하지 않는 쓰레드를 의미하며, 색칠 된 화살표는 동작하고 있는 쓰레드를 의미한다.
+SM 코어는 SIMT 방식으로 동작하기 때문에, 분기를 만나더라도 warp 내의 쓰레드는 모두 하나의 function unit에 들어가 동작하게 된다.
+즉, 실제로는 warp는 instruction에 따라 sequential하게 실행되는데,
+  active mask란 개념을 도입해 쓰레드 연산 결과를 저장하지 않음으로 분기를 구현했다.
+
+이를 바탕으로 그림을 자세히 따라가보자.
+
+일단 (a)의 그림을 살펴보면, 블록 A에서는 어떠한 divergence도 일어나지 않기 때문에 warp 내의 모든 쓰레드가 동작한다 (active mask = 1111).
+이후 B와 F 블록으로 branch divergence가 발생하게 된다.
+Branch divergence가 일어나기 전에, 그림 (c)와 같이 PC 값들이 SIMT stack이 쌓이게 된다.
+SIMT stack에는 각 branch의 다음 PC를 가리키는 스택들이 쌓이게 되며, 이에 해당하는 active mask가 스택에 함께 저장된다.
+각 스택에는 reconvergent 블록에 해당하는 PC 정보가 함께 저장되며, 이를 이용해 control flow의 functionality를 보장한다.
+SIMT stack의 가장 위는 B를 next PC로 가리키고 있기 때문에, B 블록을 먼저 실행한다.
+B의 active mask는 1110으로 warp 내의 3개의 쓰레드만 branch에 해당하기 때문에, 해당 쓰레드의 연산만 유효하다.
+
+SIMT stack을 쌓고 제거하는 과정을 반복하며, nested control flow를 처리한다.
+그래서 GPU의 SM 코어는 복잡한 control flow도 functionality를 보장할 수 있다.
+
+
+## SIMT Deadlock and Stackless SIMT Architectures
+
+하지만 SIMT stack을 이용한 control flow 처리는 몇 가지 문제점이 있다.
+가장 큰 문제는 SIMT deadlock이라 부르는 현상이다.
+Volta 마이크로아키텍처 이전에는 SIMT deadlock을 해결하기 위해, 프로그래머가 직접 코드를 변경해야 했다.
+NVIDIA는 Volta 마이크로아키텍처부터 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
