@@ -152,10 +152,62 @@ SIMT stack을 쌓고 제거하는 과정을 반복하며, nested control flow를
 하지만 SIMT stack을 이용한 control flow 처리는 몇 가지 문제점이 있다.
 가장 큰 문제는 SIMT deadlock이라 부르는 현상이다.
 Volta 마이크로아키텍처 이전에는 SIMT deadlock을 해결하기 위해, 프로그래머가 직접 코드를 변경해야 했다.
-NVIDIA는 Volta 마이크로아키텍처부터 
+NVIDIA는 Volta 마이크로아키텍처부터, Independent Thread Scheduling이라 불리는, stackless 방식을 도입해 SIMT deadlock 문제를 해결했다.
+Independent thread scheduling을 설명하기 전에, SIMT deadlock에 대해 먼저 설명한 후, ITS에 대해서 얘기하도록 하겠다.
+
+### SIMT Deadlock
+
+먼저 아래 코드를 살펴보자.
+
+```c++
+*mutex = 0;                       // A
+while (!atomicCAS(mutex, 0, 1));  // B, B'
+// some critical section          // C
+atomicExch (mutex, 0);
+```
+
+여기선 atomic operation으로 mutex를 조작해, 여러 쓰레드가 critical section을 접근하도록 만들었다.
+
+|<a name="Figure 3">![alt SIMT deadlock 예시]({{ img_path }}-fig3.jpg)</a>|
+|:------|
+|Figure 3. SIMT deadlock 예시| 
+
+[Figure 3.](#Figure 3)의 동작을 시간에 따라 표현했다.
+SIMT Core에서 branch divergence가 일어나면 sequential 하게 동작한다는 것을 염두해두고 살펴보자.
+
+모든 쓰레드는 `mutex`에 0을 대입한다 (A 블록). 그리고 while의 조건문에 들어가게 되면, branch divergence가 일어나게 된다.
+첫 번째 쓰레드는 여기서 `mutex`를 잠그고 critical section에 들어간다 (B 블록).
+다른 쓰레드들은 `mutex`가 해제되길 기다린다 (B' 블록).
+하지만 첫 번째 쓰레드가 `atomicExch (mutex, 0)` 구문에 도달해야 `mutex`는 해제된다 (C 블록).
+C 블록은 B' 블록이 끝나야 실행될 수 있는데, while 구문에서 `mutex`를 기다리며 무한 루프를 돌고 있기 때문에 실행될 수 없다.
+이 때문에 SIMT deadlock이 발생한다. 이러한 현상을 SIMT deadlock 중에서도 spinlock이라 부른다.
+SIMT deadlock은 spinlock을 제외하고도 다양한 경우에 발생한다.
+
+```c++
+done = false;
+*mutex = 0;
+while (!done) {
+  if (atomicCAS(mutex, 0, 1) == 0) {
+    // critical section
+    atomicExch (mutex, 0);
+    done = true;
+  }
+}
+```
+
+기존에는 spinlock을 해결하기 위해, 기존 코드를 위처럼 수정해 문제를 해결했다.
+프로그래머에게 추가적인 하드웨어 지식을 요구했다.
+하지만 stackless 구조를 채용한 뒤로는 이런 번거로운 작업이 사라지게 됐다.
+
+### Stackless SIMT Architectures
+
+Stackless SIMT 구조는 per-warp convergence barrier를 이용한다.
+[Figure 4.](#Figure 4)는 NVIDIA 특허 문서에서 발췌한 내용이며, per-warp convergence barrier 동작에 필요한 요소들이다.
 
 
-
+|<a name="Figure 4">![alt Stackless SIMT 동작을 위한 요소들]({{ img_path }}-fig4.jpg)</a>|
+|:------|
+|Figure 3. Stackless SIMT 동작을 위한 요소들| 
 
 
 
