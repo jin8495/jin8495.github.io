@@ -202,26 +202,50 @@ while (!done) {
 ### Stackless SIMT Architectures
 
 Stackless SIMT 구조는 per-warp convergence barrier를 이용한다.
-[Figure 4.](#Figure 4)는 NVIDIA 특허 문서에서 발췌한 내용이며, per-warp convergence barrier 동작에 필요한 요소들이다.
+[Figure 4.](#Figure 4)는 NVIDIA 특허 문서에서 발췌한 내용이며, per-warp convergence barrier 동작에 필요한 필드들이다.
 
 
-|<a name="Figure 4">![alt Stackless SIMT 동작을 위한 요소들]({{ img_path }}-fig4.jpg)</a>|
+|<a name="Figure 4">![alt Stackless SIMT 동작을 위한 필드]({{ img_path }}-fig4.jpg){: width="400"}</a>|
 |:------|
-|Figure 3. Stackless SIMT 동작을 위한 요소들| 
+|Figure 4. Stackless SIMT 동작을 위한 필드| 
+
+- **Barrier Participation Mask**: 주어진 warp에서 어떤 쓰레드가 convergence barrier에 속하는지를 나타낸다.
+  Warp 내의 barrier participation mask는 1개 이상일 수 있다.
+
+- **Barrier State**: Barrier participation mask에 속한 쓰레드 중, 어떤 쓰레드가 convergence barrier에 도달했는지를 추적하기 위한 필드이다.
+
+- **Thread State**: Warp 내의 각 쓰레드가 현재 어떤 상태인지를 나타낸다.
+  쓰레드는 총 3가지의 상태를 가진다. 각 상태는 ready to execute, blocked, yielded가 있다.
+
+- **Thread rPC**: 대기 중(active 상태가 아닌)인 쓰레드의 다음 instruction의 주소를 저장한다.
+
+- **Thread Active**: Warp 내의 쓰레드 중 어느 쓰레드가 active 상태인지를 나타낸다. 각 쓰레드에 대해 1-bit 씩 필요하다.
+
+Stackless SIMT 구조는 stack-based SIMT와 달리, 스케쥴러가 분기들을 자유롭게 넘나들 수 있다. 그렇기 때문에 SIMT deadlock을 해결 가능하다.
+[Figure 5.](#Figure 5)는 stack-based SIMT와 stackless SIMT의 예시를 보여주는데, 여기서 각각의 SIMT 구조가 어떤 식으로 동작하는지 확인할 수 있다.
+
+|<a name="Figure 5">![alt Stack-based SIMT와 stackless SIMT의 예시]({{ img_path }}-fig5.jpg)</a>|
+|:------|
+|Figure 5. Stack-based SIMT와 stackless SIMT의 동작 예시|
 
 
+## Warp Scheduling
 
+이해를 돕기 위해 여전히 GPU를 간단한 구조로 가정하고 있다. 이 구조에서는 각 warp는 하나의 instruction만을 issue해 스케쥴링할 것이다.
+그리고 issue 된 instruction이 끝나기 전까지 또다른 instruction을 issue 하지 않는다.
+추가로, 메모리 시스템 역시 이상적이라고 가정할 것이다. 따라서 memory request가 들어오면 무조건 일정한 시간 (fixed latency)가 지난 후[^2] 응답하게 된다.
 
+위 가정이 붙은 상황에서는, fine-grained multithreading 만으로도 memory access latency를 모두 숨길 수 있을 만큼 충분한 양의 warp를 동작할 수 있다.
+이런 상황에서는 단순한 *round-robin* 정책만으로도 스케쥴링을 충분히 할 수 있다.
+그리고 모든 연산 코어에 warp를 채워넣을 수 있기 때문에 underutilization이 발생하지 않을 수 있다.
+하지만 많은 warp가 동작하는 만큼 레지스터 역시 필요하기 때문에, warp의 수를 단순히 늘리는 것은 하드웨어 면적 오버헤드가 커지게 된다.
 
+실제 상황에서는 메모리 시스템이 이상적이지도 않고, 하드웨어 면적도 제한이 있기 때문에 위와 같이 warp를 스케쥴링 할 수 없다. 
+그래서 memory access의 locality에 따라 조금씩 다른 정책을 이용한다.
+Texture map과 같이 locality가 높은 경우라면 round-robin을 이용하면 충분한 효과를 얻을 수 있지만,
+  locality가 낮다면 동일한 thread를 계속 스케쥴링하는 것이 더더욱 효과적일 수 있다.
 
-
-
-
-
-
-
-
-
+# Two-Loop Approximation
 
 
 
@@ -238,3 +262,5 @@ Stackless SIMT 구조는 per-warp convergence barrier를 이용한다.
 
 [^1]: CPU의 function unit은 *load/store unit, floating-point unit, integer unit* 등으로 구성된다.
     GPU도 이와 마찬가지로 instruction의 종류별로 하드웨어 unit을 갖지 않고, insturcion의 일부만 처리하도록 설계되어 있다.
+
+[^2]: 실제 메모리 시스템은 상황에 따라 가변적인 시간 (variable latency) 뒤에 응답한다.
