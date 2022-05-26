@@ -21,7 +21,7 @@ title                    : "Archives of Everyday Life."
 title_separator          : "|"
 subtitle                 : "Work Hard. Climb Harder." # site tagline that appears below site title in masthead
 name                     : "Hoyong Jin"
-description              : "반도체 개발, 설계 및 등반 관련 블로그."
+description              : "컴퓨터 구조와 반도체 설계, 그리고 클라이밍을 이야기하는 블로그."
 url                      : "https://jin8495.github.io"  # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "/"                          # the subpath of your site, e.g. "/blog"
 repository               : "jin8495/jin8495.github.io"  # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
