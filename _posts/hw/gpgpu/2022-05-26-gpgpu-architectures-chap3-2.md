@@ -7,9 +7,17 @@ tags:
 ---
 
 
+이전 글에 이어서 계속 하겠다.
+이번 게시글은 two-loop approximation과 three-loop approximation에 대한 설명이다.
+One-loop approximation이 단순한 GPU 구조를 가정했다면,
+  two, three-loop approximation에서는 좀 더 복잡한 구조를 가정한다.
+이를 통해 좀 더 현실에 가까운 GPU를 설명한다.
 
-{%assign img_path = "/assets/images/hw/gpgpu/2022-05-16-gpgpu-architectures-chap3" %}
 
+{%assign img_path = "/assets/images/hw/gpgpu/2022-05-26-gpgpu-architectures-chap3" %}
+
+
+---
 
 # Two-Loop Approximation
 
@@ -35,6 +43,8 @@ Scoreboard의 경우 out-of-order 프로세서에서 매우 큰 오버헤드를 
 그런데 GPU는 in-order multithreaded 프로세서로 볼 수 있다.
 이때문에 scoreboard에 많은 수의 read port가 필요한데, 이를 해결하기 위해 다양한 연구가 있어왔다.
 
+---
+
 # Three-Loop Approximation
 
 One-loop approximation에서는 한 번에 하나의 instruction만을 issue하는 간단한 GPU를 가정했다.
@@ -48,5 +58,21 @@ One-loop approximation에서는 한 번에 하나의 instruction만을 issue하�
   register file의 크기는 클 수밖에 없다.
 
 Three-loop approximation에서는 register file 최적화에 초점을 둔다.
+기존 register file은 naïve 한 구조였기 때문에,
+  cycle 마다 instruction이 issue 될 때 필요한 operand의 수만큼 port가 필요했다.
+이러한 구조는 하드웨어 면적을 엄청나게 차지하기 때문에 비효율적이다.
+
+이를 해결하는 방법 중 하나로, 하나의 port에 여러 bank를 두는 방식을 생각해볼 수 있다.
+또다른 방법으로 operand collector란 것이 있는데,
+  operand collector를 잘 이용하면 하나의 port에 여러 bank를 두는 것과 동일한 효과를 얻을 수 있다.
+
+Operand collector를 자세하게 이해하기 위해, [Figure 1.](#Figure 1)의 naïve 구조와 비교해보겠다.
+
+TODO: 그림 그리기
+
+|<a name="Figure 1">![alt Naïve 구조의 register file]({{ img_path }}-fig1.jpg)</a>|
+|:-------|
+|Figure 1. Naïve 구조의 register file|
+
 
 
