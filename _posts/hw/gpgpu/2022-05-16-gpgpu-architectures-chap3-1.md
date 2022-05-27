@@ -247,6 +247,8 @@ Texture map과 같이 locality가 높은 경우라면 round-robin을 이용하�
 
 ----
 
+# 정리
+
 분량이 너무 길어져서 two-loop approximation 부터는 다음 게시글에 계속 진행하도록 하겠다.
 
 
