@@ -21,6 +21,10 @@ main:
     sublinks:
     - title: "Bouldering"
       url: /climbing/bouldering
+    - title: "Sport"
+      url: /climbing/sport
+    - title: "Multi-pitch"
+      url: /climbing/multi_pitch
     - title: "etc."
       url: /climbing/etc
 
