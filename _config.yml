@@ -350,6 +350,20 @@ defaults:
       category:
         - "Climbing-Bouldering"
   - scope:
+      path: "_posts/climbing/sport"
+      type: posts
+    values:
+      toc: true
+      category:
+        - "Climbing-Sport"
+  - scope:
+      path: "_posts/climbing/multi_pitch"
+      type: posts
+    values:
+      toc: true
+      category:
+        - "Climbing-Multi_Pitch"
+  - scope:
       path: "_posts/others/books"
       type: posts
     values:
