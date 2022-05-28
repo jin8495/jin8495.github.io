@@ -147,7 +147,7 @@ tags:
 
 ------------
 
-{% assign img_path_02 = "/assets/images/climbing/bouldering/2022-05-27-moraksan-kaywon" %}
+{% assign img_path_02 = "/assets/images/climbing/bouldering/2022-05-26-moraksan-kaywon" %}
 
 # 22.05.26
 
