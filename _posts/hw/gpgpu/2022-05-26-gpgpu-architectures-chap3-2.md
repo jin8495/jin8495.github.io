@@ -1,10 +1,9 @@
 ---
-title: "WIP) GP-GPU 구조 시리즈: 챕터 3-2 - The SIMT Core: Instruction and Register Data Flow"
+title: "GP-GPU 구조 시리즈: 챕터 3-2 - The SIMT Core: Instruction and Register Data Flow"
 tags:
   - 컴퓨터구조
   - GPGPU
   - 시리즈
-  - WIP
 ---
 
 
