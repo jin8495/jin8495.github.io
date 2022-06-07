@@ -106,24 +106,63 @@ Warp에서 사용될 모든 source operand가 모두 불러오면 execution unit
 ## Operand Collector
 
 
+|<a name="Figure 3">![alt Operand collector 구조]({{ img_path }}-fig3.jpg)</a>|
+|:-------|
+|Figure 3. Operand collector의 구조|
+
+[Figure 3.](#Figure 3)은 operand collector 구조를 보여준다.
+이전 구조와 가장 많은 차이를 보이는 부분은, RR/EX pipeline register가 collector unit으로 대체된 것이다.
+Collector unit은 각 warp에 대한 instruction의 operand를 보관하고 있기 때문에,
+  bank conflict 상황에서도 throughput을 향상시킬 수 있다.
+게다가 operand collector는 별도의 스케쥴링 정책을 사용할 수 있기 때문에, bank conflict가 발생할 확률을 낮출 수 있다.
+
+스케쥴링 정책은 다양하게 사용할 수 있지만, 가장 간단한 것은 다른 warp의 동일한 register는 다른 bank에 저장하는 것이다.
+이 예시는 [Figure 4.](#Figure 4)의 (a) 그림을 통해 쉽게 이해할 수 있다.
+
+|<a name="Figure 4">![alt Operand collector register의 레이아웃과 동작 예시]({{ img_path }}-fig4.jpg)</a>|
+|:-----:|
+|Figure 4. Operand collector register의 레이아웃과 동작 예시|
+
+이와 같은 스케쥴링 방식은 서로 다른 warp가 비슷한 진행 속도를 보일 때만 bank conflict를 줄일 수 있으며,
+  같은 instruction 내에서 일어나는 bank conflict는 해결할 수 없다.
+
+(b)와 (c)는 operand collector가 적용됐을 때, GPU의 동작 예시를 나타낸다.
+여기선 총 4개의 warp가 instruction을 수행한다.
+하지만 naïve register file에 비해 bank conflict가 일어나는 횟수가 줄어들었기 때문에,
+  같은 cycle이더라도 더 많은 instruction을 수행한다는 것을 알 수 있다.
 
 
+## Instruction Replay: Handling Structural Hazards
 
+Operand collector와 같은 모듈은 bank conflict를 낮춰줌으로써, 성능 향상을 도모한다.
+하지만 이와 같은 방법을 사용하더라도 모든 pipeline hazard를 제거할 수는 없다.
+Operand collector가 가지는 가장 대표적인 문제는 write-after-read (WAR) hazard가 발생할 수 있단 것이다.
+서로 다른 instruction 사이의 순서를 보장하지 않기 때문에, WAR hazard가 발생할 수 있다.
 
-
-
-
-
-
+Pipeline hazard를 없앨 수 있는 가장 단순한 방법은
+  instruction을 다시 실행하는 것이다.
+이러한 방식을 instruction replay라 하는데,
+  GPU는 instruction buffer 내에서 dependency를 찾아 필요할 경우 instruction replay를 진행한다.
 
 ----
 
 # 정리
+
+이번 챕터에서는 두 게시글에 걸쳐서, GPU의 SIMT 연산에 대해서 자세히 다뤄보았다.
+내가 설명하고 있는 책이 2018년도에 출판됐다보니, 벌써 GPU는 많은 것들이 바뀌었다.
+하지만 큰 결은 여전히 비슷하기 때문에 GPU를 연구하는 연구자들은 게시글에서 많은 도움을 얻었으면 좋겠다.
+
+이 책이 좋은 점은 다양한 시각에서 GPU의 문제점을 해결할 수 있는 research direction을 제시해준다는 것이다.
+책의 내용을 나름대로 요약해서 게시글에 옮겨두긴 했지만, 좀 더 자세히 공부하고 싶은 분들은 책을 직접 읽어보기를 권장한다.
+
+다음 챕터이자 마지막 챕터에서는 GPU의 메모리 계층구조에 대해서 설명할 것이다.
+
 
 
 ---
 
 # 참고 자료
 
+- T. M. Aamodt, W. W. L. Fung, and T. G. Rogers, General-purpose graphics processor architectures. San Rafael, California: Morgan & Claypool Publishers, 2018. doi: 10.2200/S00848ED1V01Y201804CAC044.
 
 
