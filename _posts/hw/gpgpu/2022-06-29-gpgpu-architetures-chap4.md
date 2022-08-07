@@ -74,4 +74,50 @@ Memory access request는 여러 개의 memory address의 집합으로 이뤄져 
 
 ### Scratch Pad Memory Access Operation
 
+Shared memory 접근을 하게 되면, 가장 먼저 Arbiter ②가 해당 접근의 메모리 주소가 bank conflict를 일으키는지,
+  일으키지 않는지를 먼저 판단하게 된다.
+만약 bank conflict를 일으킬 것 같다면, Arbiter ②는 request를 두 부분으로 나눈다.
+첫 번째 부분은 bank conflict를 일으키지 않는 thread들이고, 나머지는 bank conflict를 일으키는 thread들이다.
+Bank conflict를 일으키는 thread가 요청한 request는 다시 instruction pipeline으로 돌아가 다시 실행된다.
+이러한 execution 방식을 replay라 부른다.
+Replay는 area와 energy efficiency 사이의 trade-off가 존재한다.
+Replay를 하게 되면, memory access instruction이 instruction buffer로 다시 돌려보내지기 때문에 
+  area를 아낄 수 있지만, 큰 buffer를 다시 접근하기 때문에 energy를 소모하게 된다.
+Instruction buffer의 buffering을 제한하는 것으로, 이를 해결할 수 있다.
+Buffer의 크기를 제한한 뒤, buffer의 남은 공간이 부족하면 memory access operation을 스케쥴링하지 않는다.
+그러면 request가 나가지 않기 때문에, 버퍼를 사용하지 않는다.
+덕분에 버퍼를 접근하지 않아 energy를 아낄 수 있고 buffer의 용량을 줄여 area도 아낄 수 있다.
+되돌려 보내진 reqeust들이 replay 되는 방식을 자세히 알아보기 전에,
+  bank conflict를 일으키지 않는 request가 어떻게 처리되는지 먼저 알아보자.
+
+Shared memory는 direct-mapped cache이기 때문에 request는 Tag Unit ③을 look up 하지 않는다.
+Arbiter ②가 request를 받아들임과 동시에 register file에 writeback을 미리 스케쥴한다.
+왜냐하면 bank conflict가 발생하지 않는 상황에서 direct-mapped cache의 access latency는 일정하기 때문이다.
+Tag Unit ③을 look up 하지는 않지만, 각 thread의 주소가 어느 bank에 맵핑되어 있는지 알기 때문에 
+Address Crossbar ④를 제어해 reqeust가 Data Array ⑤를 올바르게 접근하도록 한다.
+Data Array ⑤는 32-bit 크기이며, 각 bank의 개별 row를 개별적으로 접근하더라도 처리할 수 있도록 decoder를 갖고 있다.
+이렇게 반환된 데이터는 Data Crossbar ⑥를 거쳐 올바른 thread lane의 register file로 쓰여지게 된다.
+이때 active thread가 아니라면, register file에 쓰여지지 않고 무시된다.
+
+만약 shared memory 접근에 1 cycle이 소모된다면, 1 cycle 이후에 replay가 진행된다.
+Replay 된 request들은 다시 L1 cache의 Arbiter ②를 접근하며, bank conflict가 또 일어난다면, request는 다시 나뉘게 된다.
+
+### Cache Read Operations
+
+L1 cache의 Data Array ⑤는 많은 수의 bank로 이루어져 있기 때문에 개별 warp는 shared memory를 각각 접근할 수 있다.
+반면, global memory 영역에 속하는 L1 memory는 1 cycle에 하나의 cache-line만 접근 가능하도록 제약이 걸려있다.
+이 제약 덕분에 tag overhead를 줄일 수 있다.
+
+Fermi와 Kepler micro-architecture에서는 128B cache-line 크기를 갖지만, Maxwell부터는 이를 4개로 나눈 32B cache-line 크기를 갖는다.
+각각의 32B를 sector라 부르는데, 덕분에 낭비되는 GP-GPU의 대역폭을 아낄 수 있게 됐다.
+Sector의 크기를 32B로 둔 이유는, GP-GPU에서 사용하는 DRAM의 접근 크기 때문이다.
+GDDR5나 HBM2와 같은 GP-GPU 용 메모리 인터페이스 표준은 최소 접근 단위가 32B이다.
+Sector의 크기가 32B보다 더 작아도 DRAM은 무조건 32B로만 접근이 가능하기 때문에, 32B의 sector를 갖게 됐다.
+
+이제 cache read 과정을 살펴보자.
+Load/Store Unit ①은 가장 먼저 request의 메모리 주소를 계산한 다음 coalescing 여부를 판단한다.
+그 다음 coalesced request는 Arbiter ②로 전달된다.
+이때 Arbiter ②는 request 처리 자원이 부족하다면 request 처리를 거부할 수 있다.
+예를 들어, cache set의 모든 way가 처리 중이거나 Pending Request Table ⑦의 공간이 없다면 request는 거부된다.
+Pending Request Table ⑦은 추후에 자세히 설명하도록 하겠다.
 
