@@ -138,3 +138,35 @@ Sector의 크기가 32B보다 더 작아도 DRAM은 무조건 32B로만 접근�
 
 ### Cache Write Operations
 
+L1 data cache는 write through와 write back 정책을 모두 지원한다.
+이는 memory space에 따라 결정 된다.
+- **Global memory**: GP-GPU의 kernel은 종료 직전에 대량의 데이터를 메모리에 쓰기 때문에
+  temporal locality가 좋지 않을 것으로 예상할 수 있다.
+  따라서 write through with no write allocate 정책을 사용하는 것이 바람직하다.
+- **Local memory**: Spilling register로 인해 local memory 영역에 데이터를 쓴다면 temporal locality가 좋을 것으로 예상할 수 있다.
+  따라서 write back with write allocate 정책을 사용하는 것이 바람직하다.
+
+1. Cache에 쓰여질 데이터는 shared memory든, global memory든 관계없이 Write Data Buffer (WDB) ⑩에 먼저 쓰여진다.
+2. 만약 쓰고자하는 block이 cache에 존재한다면, Data Crossbar ⑥를 통해 Data Array ⑤에 데이터를 쓰게 된다.
+3. Cache block이 존재하지 않는다면, L2 cache나 DRAM 메모리에서 block을 먼저 읽어온다.
+
+위 과정 중에서 uncoalesced access나, 일부 thread가 마스킹 되어 있는 경우라면 cache block의 일부에만 데이터를 쓴다.
+Cache block의 모든 데이터를 써야하는 coalesced write인데 해당 block이 invalidate 상태라면,
+  cache는 건너 뛰고 하위 메모리에 바로 write을 한다.
+
+주의할 점으로는 NVIDIA GPU의 L1 data cache는 cache coherence를 지원하지 않는다.
+따라서 여러 thread가 동일한 메모리 위치에 데이터를 쓸 때, 원치 않는 결과를 얻을 수도 있다.
+
+---
+
+# 정리
+
+이번 포스트에서는 GPU의 L1 cache를 중심으로 설명했다.
+이외에도 GPU 메모리 계층에는 L1 texture cache, L2 cache, memroy partition 등이 있다.
+이들은 다음 포스트에서 다뤄보도록 하겠다.
+
+---
+
+# 참고 자료
+
+- T. M. Aamodt, W. W. L. Fung, and T. G. Rogers, General-purpose graphics processor architectures. San Rafael, California: Morgan & Claypool Publishers, 2018. doi: 10.2200/S00848ED1V01Y201804CAC044.
