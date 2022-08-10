@@ -3,9 +3,28 @@ title: "About"
 layout: "single"
 permalink: about/
 ---
-컴퓨터 구조와 시스템 연구하는 대학원생.
-AI와 딥러닝도 공부 중.
 
-취미 클라이머. 목표는 V10, 5.13
+# Zachary Hoyong Jin
 
-여기 뭐 적어야하지...? 나중에 잘 정리해서 CV라도 적어보자.
+### Occupation
+- **OPENEDGES Technology, Seoul, Korea (2022 ~ )**
+  - Staff Engineer, NPU Team
+
+---
+
+### Education
+- **Bachelor's Degree of Electrical and Computer Engineering (2013 ~ 2020)**
+  - Ajou University, Suwon, Korea
+
+- **Master's Degree of Electrical and Computer Engineering (2020 ~ 2023)**
+  - Sungkyunkwan University, Suwon, Korea
+
+---
+
+### Publication
+- ["Multi-Prediction Compression: An Efficient and Scalable Memory Compression Framework for GP-GPU," in IEEE Computer Architecture Letters, vol. 21, no. 2, pp. 37-40, 1 July-Dec. 2022](https://ieeexplore.ieee.org/document/9780608)
+
+
+
+
+

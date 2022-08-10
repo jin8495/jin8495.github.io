@@ -20,7 +20,7 @@ locale                   : "en-US"
 title                    : "Archives of Everyday Life."
 title_separator          : "|"
 subtitle                 : "Work Hard. Climb Harder." # site tagline that appears below site title in masthead
-name                     : "Hoyong Jin"
+name                     : "Zachary Hoyong Jin"
 description              : "컴퓨터 구조와 반도체 설계, 그리고 클라이밍을 이야기하는 블로그."
 url                      : "https://jin8495.github.io"  # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "/"                          # the subpath of your site, e.g. "/blog"
@@ -109,11 +109,11 @@ analytics:
 
 # Site Author
 author:
-  name             : "Hoyong Jin"
+  name             : "Zach. HY. Jin"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : 
     - icon: "{{ fas fa-microchip }}"
-      description: "Computer Archi."
+      description: "Computer Arch."
     - icon: "{{ fas fa-brain }}"
       description: "Deep Learning."
     - icon: "{{ fas fa-mountain }}"
