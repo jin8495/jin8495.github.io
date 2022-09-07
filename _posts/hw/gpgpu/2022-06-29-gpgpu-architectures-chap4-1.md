@@ -74,6 +74,10 @@ Memory access request는 여러 개의 memory address의 집합으로 이뤄져 
 
 ### Scratch Pad Memory Access Operation
 
+|<a name="Figure 2">![alt Unified L1 cache에서 shared memory 접근 시 경로]({{ img_path }}-fig2.jpg)</a>|
+|:-------|
+|Figure 2. Unified L1 cache에서 shared memory 접근 시 경로|
+
 1. Shared memory 접근을 하게 되면, 가장 먼저 Arbiter ②가 해당 접근의 메모리 주소가 bank conflict를 일으키는지,
   일으키지 않는지를 먼저 판단하게 된다.
 2. 만약 bank conflict를 일으킬 것 같다면, Arbiter ②는 request를 두 부분으로 나눈다. 
@@ -102,6 +106,10 @@ Memory access request는 여러 개의 memory address의 집합으로 이뤄져 
   Replay 된 request들은 다시 L1 cache의 Arbiter ②를 접근하며, bank conflict가 또 일어난다면, request는 다시 나뉘게 된다.
 
 ### Cache Read Operations
+
+|<a name="Figure 3">![alt Unified L1 cache에서 cache read 동작 시 경로]({{ img_path }}-fig3.jpg)</a>|
+|:-------|
+|Figure 3. Unified L1 cache에서 cache read 동작 시 경로|
 
 L1 cache의 Data Array ⑤는 많은 수의 bank로 이루어져 있기 때문에 개별 warp는 shared memory를 각각 접근할 수 있다.
 반면, global memory 영역에 속하는 L1 memory는 1 cycle에 하나의 cache-line만 접근 가능하도록 제약이 걸려있다.
@@ -137,6 +145,10 @@ Sector의 크기가 32B보다 더 작아도 DRAM은 무조건 32B로만 접근�
   Load/Store Unit ①을 다시 스케쥴한다.
 
 ### Cache Write Operations
+
+|<a name="Figure 4">![alt Unified L1 cache에서 cache write 동작 시 경로]({{ img_path }}-fig4.jpg)</a>|
+|:-------|
+|Figure 4. Unified L1 cache에서 cache write 동작 시 경로|
 
 L1 data cache는 write through와 write back 정책을 모두 지원한다.
 이는 memory space에 따라 결정 된다.
