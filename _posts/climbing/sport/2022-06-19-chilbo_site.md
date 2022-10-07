@@ -25,15 +25,15 @@ tags:
 
 칠보산 기도원을 가는 길에 특이한 담장을 가진 집이 보일 것이다.
 
-{% assign img_path_access = "/assets/images/climbing/sport/2022-06-19-chilbo_site-access" %}
+{% assign img_dir = "/assets/images/climbing/sport/chilbo_site/" %}
 
-|<a name="어프로치01">![alt 칠보 암장 가는 길]({{ img_path_access }}_00.png){: width="600"}</a>|
+|<a name="어프로치01">![alt 칠보 암장 가는 길]({{ img_dir }}access_00.png){: width="600"}</a>|
 |:-------:|
 |칠보 암장 가는 길에 보이는 특이한 형태의 담벼락. [출처](https://youtu.be/L66mMi6_9M0)|
 
 이 담벼락을 기준으로 바로 뒤에 전봇대가 보이는데, 전봇대 옆의 오솔길이 암장으로 가는 길이다.
 
-|<a name="어프로치02">![alt 칠보 암장 가는 오솔길]({{ img_path_access }}_01.png){: width="600"}</a>|
+|<a name="어프로치02">![alt 칠보 암장 가는 오솔길]({{ img_dir }}access_01.png){: width="600"}</a>|
 |:-------:|
 |암장을 가는 오솔길. 이 길을 따라 올라가면 된다.|
 
@@ -50,7 +50,7 @@ tags:
 
 중앙 벽은 빌레이 보기 수월하지만 우측 경사로는 빌레이보기가 까다로우니 주의할 것.
 
-|<a name="개념도">![alt 개념도]({{ img_path_access }}_02.png){: width="500"}</a>|
+|<a name="개념도">![alt 개념도]({{ img_dir }}access_02.png){: width="500"}</a>|
 |:----:
 |칠보 암장 개념도.|
 
@@ -68,7 +68,9 @@ tags:
 
 ----
 
-# 22.06.19
+# 기록
+
+## 22.06.19
 
 가장 가까운 자연 암장임에도 불구하고 너무 늦게 찾아온 것 같다.
 그저께 비가 많이 와서 암질이 안좋으면 어쩌나 걱정했는데, 생각보다 젖지도 않았고 질감은 괜찮았다.

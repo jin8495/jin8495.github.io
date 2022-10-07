@@ -25,9 +25,9 @@ tags:
 
 학암포를 가는 길은 두 가지 인데, 하나는 해안길, 다른 하나는 산길이다.
 
-{% assign img_path_access = "/assets/images/climbing/sport/2022-05-27-hakampo_sea_cliff-access" %}
+{% assign img_dir = "/assets/images/climbing/sport/hakampo_sea_cliff/" %}
 
-|<a name="어프로치">![alt 학암포 암장 가는 길]({{ img_path_access }}_00.jpg)</a>|
+|<a name="어프로치">![alt 학암포 암장 가는 길]({{ img_dir }}access_00.jpg)</a>|
 |:-------:|
 |학암포 가는 두 가지 길. [출처](https://blog.naver.com/caramelsnow/222546660028)|
 
@@ -54,6 +54,8 @@ tags:
 뜀바위 아래는 파도가 엄청 강하게 치고 있기 때문에 빠지지 않도록 확보물을 미리 설치해두는게 좋을 것이다.
 슬링을 챙겨가면 뜀바위에서 매우 도움이 된다.
 
+---
+
 
 # 개념도
 
@@ -62,11 +64,11 @@ tags:
 
 빌레이 스팟이 좁고 경사가 있기 때문에 유의해야하며, 물건을 잘 간수하지 못하면 파도에 휩쓸려 내려갈 수 있다.
 
-|<a name="개념도 1">![alt 개념도 1]({{ img_path_access }}_01.jpg)</a>|
+|<a name="개념도 1">![alt 개념도 1]({{ img_dir }}access_01.jpg)</a>|
 |:----:|
 |학암포 암장 개념도. [출처](http://san.chosun.com/m/svc/article.html?contid=2013082002566)|
 
-|<a name="개념도 2">![alt 개념도 2]({{ img_path_access }}_02.jpg)</a>|
+|<a name="개념도 2">![alt 개념도 2]({{ img_dir }}access_02.jpg)</a>|
 |:----:|
 |학암포 암장 루트표. [출처](http://san.chosun.com/m/svc/article.html?contid=2013082002566)|
 
@@ -94,7 +96,9 @@ tags:
 
 ---
 
-# 22.06.01
+# 기록
+
+## 22.06.01
 
 작년부터 해벽에 가보고 싶단 생각을 했었는데, 이번에 지방선거로 인해 휴일이기도 해서
   경기권에서 가까운 해벽인 학암포를 가기로 했다.
@@ -121,9 +125,7 @@ tags:
 
 아무튼 5.10a 문제로 다른 사람들 탑로프 걸어주는 겸, 몸을 간단히 풀고 목표했던 문제의 루트 파인딩을 뚫어지게 했다.
 
-{% assign img_path_00 = "/assets/images/climbing/sport/2022-06-01-hakampo_sea_cliff" %}
-
-|<a name="빨간등대">![alt 빨간등대]({{ img_path_00 }}-red_lighthouse-00.jpg){: width="500"}|
+|<a name="빨간등대">![alt 빨간등대]({{ img_dir }}2022-06-01-red_lighthouse-00.jpg){: width="500"}|
 |:-----|
 |쌍무지개라 생각했던 빨간등대 (5.11b) 첫 번째 시도|
 
@@ -137,7 +139,7 @@ tags:
 행도깅으로 올라갔음에도 마지막 퀵드로는 회수하지 못하고 추락했는데, 루프 라인이라 다시 붙을 수가 없어서 하강을 했다.
 
 
-|<a name="빨간등대 완등">![alt 빨간등대]({{ img_path_00 }}-red_lighthouse-01.jpg){: width="500"}|
+|<a name="빨간등대 완등">![alt 빨간등대]({{ img_dir }}2022-06-01-red_lighthouse-01.jpg){: width="500"}|
 |:-----|
 |쌍무지개라 생각했던 빨간등대 (5.11b) 완등|
 
