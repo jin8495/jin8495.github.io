@@ -10,7 +10,7 @@ tags:
 이를 가능케하기 위해 SIMT 코어는 다양한 방법을 채용했는데,
   이번 게시글에서는 이를 알아보도록 하겠다.
 
-{%assign img_path = "/assets/images/hw/gpgpu/2022-05-16-gpgpu-architectures-chap3" %}
+{%assign img_path = "/assets/images/hw/gpgpu/gpgpu-architectures-series/2022-05-16-chap3" %}
 
 |<a name="Figure 1">![alt GPU 파이프라인]({{ img_path }}-fig1.jpg)</a>|
 |:------|

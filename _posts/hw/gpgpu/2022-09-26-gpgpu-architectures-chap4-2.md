@@ -8,7 +8,7 @@ tags:
 
 이번 포스트에서는 GPU의 L1 cache외의 메모리 계층인 L1 texture cache, L2 cache, memroy partition에 대해 다뤄볼 예정이다.
 
-{%assign img_path = "/assets/images/hw/gpgpu/2022-09-26-gpgpu-architectures-chap4" %}
+{%assign img_path = "/assets/images/hw/gpgpu/gpgpu-architectures-series/2022-09-26-chap4" %}
 
 ---
 
@@ -37,7 +37,7 @@ Texel을 메모리에 저장할 때, texel의 좌표를 메모리 주소로 활�
 왜냐하면 인접 texel들은 memory access 시에 함께 활용될 가능성이 높기 때문이다.
 이러한 locality를 잘 활용한다면 cache의 효율을 높일 수 있다.
 
-|<a name="Figure 1">![alt L1 texture cache 구조]({{ img_path }}-fig1.jpg){:width="500"}</a>|
+|<a name="Figure 1">![alt L1 texture cache 구조]({{ img_path }}-fig1.jpg){:width="600"}</a>|
 |:-------|
 |Figure 1. L1 texture cache 구조|
 
@@ -135,8 +135,9 @@ Read request sorter는 read request의 메모리 주소를 이용해 테이블�
   최근 마이크로아키텍쳐인 Ampere나 Lovelace, Hopper와는 조금 다른 구조를 가지고 있을 수도 있다.
 하지만 대략적인 구조는 비슷할 것으로 생각되기 때문에 GPU를 공부하면서 많은 도움이 될 것이라 생각한다.
 
-책의 내용을 블로그에 정리를 해두긴 했지만, 부족한 부분도 많고 곡해된 부분도 있을 것 같으니
-  정확한 내용은 책을 직접 읽어보기를 권장한다.
+책의 내용을 블로그에 정리를 해두긴 했지만 테크 블로그에 포스팅하는 것이 처음이다보니,
+  부족한 부분도 많고 두서 없는 내용들도 많다.
+따라서 정확한 내용은 책을 직접 읽어보기를 권장한다.
 
 오랜 기간에 걸쳐 시리즈를 작성했는데, 이해가 안되는 부분도 많고 글솜씨도 부족하다보니 많은 아쉬움이 남았다.
 블로그를 자주 관리하지 못하다보니 게시글을 빨리 올려야된다는 생각이 들었고,

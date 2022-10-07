@@ -57,7 +57,7 @@ CPU와 GPU의 역할이 나뉘어진 이유 중 하나로, 연산 가속의 처�
 
 아래 그림은 CPU와 GPU가 포함된 일반적인 컴퓨터 시스템의 블록 다이어그램이다.
 
-{% assign img_path = "/assets/images/hw/gpgpu/2022-04-20-gpgpu-architectures-chap1" %}
+{% assign img_path = "/assets/images/hw/gpgpu/gpgpu-architectures-series/2022-04-20-chap1" %}
 |<a name="Figure 1">![alt GPU 컴퓨팅 시스템 분류]({{ img_path }}-fig1.png)</a>|
 |:-------|
 |Figure 1. CPU가 포함된 GPU 컴퓨팅 시스템 분류|

@@ -107,7 +107,7 @@ int main() {
 
 GPU 컴퓨팅 어플리케이션의 커널은, [Figure 1.](#Figure 1)과 같이 Grid, Block[^2], Thread의 계층으로 구성된다.
 
-{%assign img_path = "/assets/images/hw/gpgpu/2022-05-09-gpgpu-architectures-chap2" %}
+{%assign img_path = "/assets/images/hw/gpgpu/gpgpu-architectures-series/2022-05-09-chap2" %}
 |<a name="Figure 1">![alt CUDA 쓰레드 계층]({{ img_path }}-fig1.png)</a>|
 |:-------|
 |Figure 1. CUDA 프로그램의 쓰레드 계층 구조|

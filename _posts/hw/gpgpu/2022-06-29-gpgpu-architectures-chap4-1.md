@@ -11,7 +11,7 @@ GPU는 많은 양의 데이터를 한 번에 처리한다.
   큰 용량을 가지기보다는 넓은 bandwidth를 제공하는 방식으로 발전해왔다.
 이번 챕터는 메모리 시스템에 관한 내용이다.
 
-{%assign img_path = "/assets/images/hw/gpgpu/2022-06-29-gpgpu-architectures-chap4" %}
+{%assign img_path = "/assets/images/hw/gpgpu/gpgpu-architectures-series/2022-06-29-chap4" %}
 
 ---
 

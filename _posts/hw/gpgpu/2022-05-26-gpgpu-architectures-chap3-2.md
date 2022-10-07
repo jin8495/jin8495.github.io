@@ -14,7 +14,7 @@ One-loop approximation이 단순한 GPU 구조를 가정했다면,
 이를 통해 좀 더 현실에 가까운 GPU를 설명한다.
 
 
-{%assign img_path = "/assets/images/hw/gpgpu/2022-05-26-gpgpu-architectures-chap3" %}
+{%assign img_path = "/assets/images/hw/gpgpu/gpgpu-architectures-series/2022-05-26-chap3" %}
 
 
 ---

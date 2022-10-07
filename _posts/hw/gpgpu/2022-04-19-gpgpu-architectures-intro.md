@@ -12,7 +12,7 @@ toc: false
 
 어떤 주제를 먼저 연재할지 생각해보다가 내가 연구하고 있는 분야인 GP-GPU를 가장 먼저 연재하기로 결정했다.
 
-{% assign img_path = "/assets/images/hw/gpgpu/2022-04-19-gpgpu-architectures-intro" %}
+{% assign img_path = "/assets/images/hw/gpgpu/gpgpu-architectures-series/2022-04-19-intro" %}
 |<a name="썸네일">![alt 썸네일]({{ img_path }}-thumbnail.jpg){: width="200" }</a>|
 |:-------|
 |저자: Tor M. Aamodt 외 2인<br>출판사: Morgan & Claypool<br>출간일: 2018년 05월 21일|
