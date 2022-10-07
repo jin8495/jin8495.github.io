@@ -45,8 +45,8 @@ toc_sticky: false
 메모 하나 하나는 매우 모듈화되어 있기 때문에 하나의 아이디어만을 보관한다.
 이런 획기적인 아이디어 때문에 곧장 책을 구입해서 순식간에 읽어보게 됐다.
 
-{% assign img_path = "/assets/images/others/books/2022-02-21-zettelkasten" %}
-|<a name="썸네일">![alt 썸네일]({{ img_path }}-thumbnail.jpg){: width="200" }</a>|
+{% assign img_path = "/assets/images/others/books/2022-02-21-zettelkasten/" %}
+|<a name="썸네일">![alt 썸네일]({{ img_path }}thumbnail.jpg){: width="200" }</a>|
 |:------|
 |저자: 숀케 아렌스<br>역자: 김수진<br>출판사: 인간희극<br>출간일: 2021년 05월 20일|
 
@@ -62,7 +62,7 @@ toc_sticky: false
 단순하게 A6 크기의 조그마한 용지에 메모를 적어 상자 안에 넣는 방식이 뭐 그리 대수냐?라고 할 수 있겠지만,
   제텔카스텐의 가치는 메모의 연결에 있다.
 
-|<a name="데이터의 발전과정">![alt 데이터의 발전과정]({{ img_path }}-data_to_impact.jpg){: width="500" }</a>|
+|<a name="데이터의 발전과정">![alt 데이터의 발전과정]({{ img_path }}data_to_impact.jpg){: width="500" }</a>|
 |:------:|
 |데이터의 발전과정. 데이터를 어떻게 엮느냐에 따라 가치가 있느냐 없느냐가 결정된다. [출처](https://dailymanna.blog/2019/05/01/data-information-knowledge-insight-wisdom-impact/)|
 

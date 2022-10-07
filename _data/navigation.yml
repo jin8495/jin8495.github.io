@@ -17,6 +17,13 @@ main:
     - title: "etc."
       url: /hw/etc
 
+  - title: "DNN"
+    sublinks:
+    - title: "Models"
+      url: /dnn/models
+    - title: "etc."
+      url: /dnn/etc
+
   - title: "Climbing"
     sublinks:
     - title: "Bouldering"

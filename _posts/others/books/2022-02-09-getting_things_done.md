@@ -25,8 +25,8 @@ MBTI에서 INFJ-T, 그중에서도 뚜렷한 J 성향인 나는 계획이 없고
 최근 점점 많아지는 일과 체계적이지 못한 관리 방법으로 인해 정리에 드는 노력이 이전보다 확연히 늘어나게 되었다.
 이로 인한 스트레스가 늘어가는 와중, GTD가 한 줄기의 빛 같은 느낌으로 다가왔기 때문에 바로 책을 구매해 읽어봤다.
 
-{% assign img_path = "/assets/images/others/books/2022-02-09-getting_things_done" %}
-|<a name="썸네일">![alt 썸네일]({{ img_path }}-thumbnail.jpg){: width="200" }</a>|
+{% assign img_dir = "/assets/images/others/books/2022-02-09-getting_things_done/" %}
+|<a name="썸네일">![alt 썸네일]({{ img_dir }}thumbnail.jpg){: width="200" }</a>|
 |:-----|
 |저자: 데이비드 앨런<br>역자: 김경섭, 김선준<br>출판사: 김영사<br>출간일: 2016년 07월 04일|
 
@@ -83,7 +83,7 @@ GTD에서는 삶의 미해결 과제를 "열린 고리", "미완의 일" 등으�
 **4. 검토 (Review)**<br>
 **5. 실행 (Engage)**<br>
 
-|<a name="플로우차트">![alt 플로우차트]({{ img_path }}-flowchart.png){: width="100%" }</a>|
+|<a name="플로우차트">![alt 플로우차트]({{ img_dir }}flowchart.png){: width="100%" }</a>|
 |:-----:|
 |그림 1. GTD의 업무흐름 도표|
 
