@@ -6,7 +6,6 @@ tags:
   - 자기계발
   - 생산성
 toc: true
-toc_sticky: false
 ---
 
 MBTI에서 INFJ-T, 그중에서도 뚜렷한 J 성향인 나는 계획이 없고, 정리가 안 되어 있는 꼴을 잘 못 본다.

@@ -325,7 +325,7 @@ defaults:
       share: false
       related: true
       toc: true
-      toc_sticky: false
+      toc_sticky: true
 
   # images
 #  - scope:
