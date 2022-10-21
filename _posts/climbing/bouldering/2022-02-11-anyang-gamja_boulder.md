@@ -146,6 +146,8 @@ tags:
 - [네이버블로그-주제를 잃어버린 블로그~ଘ\(੭\*ˊᵕˋ\)੭ \| 안양예술공원 감자볼더 ! 감자바위 가는방법 & 주차](https://m.blog.naver.com/jya0315_/222506344198)
 - [블랙다이아몬드 \| 안양예술공원 - 감자 볼더](http://www.bdkorea.co.kr/%EC%95%88%EC%96%91%EC%98%88%EC%88%A0%EA%B3%B5%EC%9B%90-%EA%B0%90%EC%9E%90-%EB%B3%BC%EB%8D%94/)
 - [유튜브-덕규형 \| 안양예술공원 감자바위 볼더링\(First Charge / 퍼스트 차지\) \| 클라이밍하는 소방관](https://www.youtube.com/watch?v=VIT_ddneWqs)
+- [감자볼더 \- Real Time Machine , V9 \(김자인 선수 \- First Charge , V8\) \- YouTube](https://www.youtube.com/watch?v=R8rqFaCxr_E)
+- [𝗗𝗼𝗻𝗴𝗴𝘆𝘂 𝗟𝗲𝗲\(@armstdong\) • Instagram 사진 및 동영상](https://www.instagram.com/armstdong/)
 - [27 Crags \| 감자볼더](https://27crags.com/crags/15957/routelist/32015)
 
 -----
