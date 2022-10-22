@@ -562,3 +562,29 @@ body {
     }
   }
 }
+
+/*
+  Collapsible block related 
+   ========================================================================== */
+
+.collaspe-article {
+  padding-top: 10px;
+  padding-bottom: 10px;
+//  background-color: $dark-gray;
+}
+.collaspe-content{
+  padding-top: 5px;
+//  background-color: $lighter-gray;
+}
+.collaspe-content:before {
+  content: "";
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid $light-gray;
+}
+.collaspe-content:after {
+  content: "";
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid $light-gray;
+}
