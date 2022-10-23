@@ -343,6 +343,13 @@ defaults:
       category:
         - "HW-GPGPU"
   - scope:
+      path: "_posts/dnn/models"
+      type: posts
+    values:
+      toc: true
+      category:
+        - "DNN-Models"
+  - scope:
       path: "_posts/climbing/bouldering"
       type: posts
     values:
