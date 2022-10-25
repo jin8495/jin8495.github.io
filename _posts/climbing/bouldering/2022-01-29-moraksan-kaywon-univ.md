@@ -252,7 +252,7 @@ TODO: 현재 미확인
 
 ## 부엉이 바위
 
-|<a name="부엉이 바위 0">![alt 부엉이 바위0]({{ img_dir }}owl_boulder_topo0.jpg)</a>|
+|<a name="부엉이 바위 1">![alt 부엉이 바위1]({{ img_dir }}owl_boulder_topo1.jpg)</a>|
 |:---:|
 |부엉이 바위 전면|
 
@@ -261,7 +261,7 @@ TODO: 현재 미확인
 |1|V9|Owl||
 
 
-|<a name="부엉이 바위 1">![alt 부엉이 바위1]({{ img_dir }}owl_boulder_topo1.jpg)</a>|
+|<a name="부엉이 바위 0">![alt 부엉이 바위0]({{ img_dir }}owl_boulder_topo0.jpg)</a>|
 |:---:|
 |부엉이 바위 후면|
 
