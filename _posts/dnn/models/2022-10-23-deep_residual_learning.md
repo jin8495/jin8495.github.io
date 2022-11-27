@@ -169,14 +169,116 @@ Shortcut connection으로 linear projection $W_s$를 적용할 수도 있지만,
 
 ### Network Architectures
 
-TODO:
+|<a name="Figure 3">![alt Network Architecture]({{ img_dir }}3-network.png){: width="300"}</a>|
+|:---:|
+|PlainNet(좌): 3.6B FLOPS, ResNet(우): 3.6B FLOPS|
+
+
+#### Plain Network
+
+  아래 서술하는 VGG의 철학을 따른다.
+
+  - 3x3 필터 사용
+  - 같은 크기(가로, 세로)의 OFM을 갖는 레이어들은 모두 필터의 개수가 같아야 함
+  - OFM의 크기(가로, 세로)가 반으로 줄면 필터의 개수는 2배로 증가해야함
+  - OFM의 크기를 반으로 줄일 때는, stride를 2로 갖는 convolutional layer를 이용
+
+  이외에도 모델을 아래와 같이 수정했다.
+
+  - 모델의 마지막 부근에 global average pooling과 1000-way FC layer를 이용
+  - 모델의 출력 레이어는 softmax를 이용
+
+#### Residual Network
+
+  Plain Network와 거의 동일한 모델 구조를 가진다.
+
+  대신 아래와 같은 차이를 가진다.
+
+  - Shortcut connection이 추가됨
+
+    - Dimension이 같다면 identity mapping을 이용한 shortcut(실선)
+    - Dimension이 다르다면 2가지 방법을 이용해 dimension을 일치시키는 shortcut(점선)
+      - Zero-padding을 추가한 identity mapping
+      - 1x1 convolution을 이용한 linear projection
+
+
 
 ### Implementation
 
+여기서는 실험에서 사용된 모델들의 학습과 실험 방법에 대해서 설명한다.
+
+#### Image preprocess
+
+  - 이미지의 짧은 방향을 [256, 480]으로 random resize
+  - Random horizontal flip
+  - 224x224 random crop
+  - Per-pixel mean으로 subtraction
+  - PCA color augmentation(Fancy PCA) 적용
+
+[expand]summary: Fancy PCA란?
+
+AlexNet에서 활용된, RGB 채널을 자연스럽게 변화시키는 data augmentation 방식이다.
+
+|<a name="Figure 4">![alt Fancy PCA]({{ img_dir }}pca.png)</a>|
+|:---:|
+|Fancy PCA의 예시|
+
+- 참고 자료
+  - [pca\_color\_augment](https://aparico.github.io/)
+
+[/expand]
+
+#### Train
+
+- Optimizer: SGD
+- Weight decay: 0.0001
+- Momentum: 0.9
+- Mini-batch size: 256
+- Learning rate: 0.1 → training error가 개선되지 않을때마다 10으로 나눔
+- 60 x 10^4 iterations
+
+#### Test
+
+- 10-crop testing 활용
+- Multiple scale resize
+
+[expand]summary: 10-crop testing이란?
+
+이미지를 10가지 방식으로 크롭해 최고의 결과를 선택해 신경망을 테스트하는 방식이다.
+
+|<a name="Figure 5">![alt 10-crop testing]({{ img_dir }}10-crop.png)</a>|
+|:---:|
+|10-crop testing의 예시|
+
+- 참고 자료
+  - Kim, Hansohl. "Residual Networks for Tiny ImageNet." CS-231N Final Project Report (2016).
+  
+[/expand]
+
+[expand]summary: Multiple scale resize란?
+
+VGG에서 사용한 테스트 방법으로, Fully-Convolutional Network를 사용해,
+  여러 사이즈의 이미지를 테스트하는 방법이다.
+
+아래와 같은 방식으로 테스트를 진행한다.
+
+- Fully-connected layer를 convolutional layer로 교체 후 fine-tuning을 진행
+  - 이때 convolutional layer의 출력 데이터의 채널 수는 데이터셋의 클래스 수와 동일
+    - 출력 데이터의 채널을 class score map이라 부름
+  - 각 출력 데이터에 global average pooling을 적용해, 3D 텐서를 2D 벡터로 만듦
+  - 2D 벡터에 소프트맥스를 적용해 class를 결정
+- 입력 이미지의 사이즈
+  - 입력 이미지의 짧은 방향을 기준으로 {224, 256, 384, 480, 640}으로 리사이즈
+
+  
+- 참고 자료
+  - Simonyan, Karen, and Andrew Zisserman. "Very deep convolutional networks for large-scale image recognition." arXiv preprint arXiv:1409.1556 (2014).
+
+[/expand]
 
 ---
 
-
+# Experiments
 
 
 
