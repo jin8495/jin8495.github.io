@@ -171,7 +171,7 @@ Shortcut connection으로 linear projection $W_s$를 적용할 수도 있지만,
 
 |<a name="Figure 3">![alt Network Architecture]({{ img_dir }}3-network.png){: width="300"}</a>|
 |:---:|
-|PlainNet(좌): 3.6B FLOPS, ResNet(우): 3.6B FLOPS|
+|Figure 3. PlainNet(좌): 3.6B FLOPS, ResNet(우): 3.6B FLOPS|
 
 
 #### Plain Network
@@ -219,7 +219,7 @@ Shortcut connection으로 linear projection $W_s$를 적용할 수도 있지만,
 
 AlexNet에서 활용된, RGB 채널을 자연스럽게 변화시키는 data augmentation 방식이다.
 
-|<a name="Figure 4">![alt Fancy PCA]({{ img_dir }}pca.png)</a>|
+|<a name="Figure 00">![alt Fancy PCA]({{ img_dir }}pca.png)</a>|
 |:---:|
 |Fancy PCA의 예시|
 
@@ -246,7 +246,7 @@ AlexNet에서 활용된, RGB 채널을 자연스럽게 변화시키는 data augm
 
 이미지를 10가지 방식으로 크롭해 최고의 결과를 선택해 신경망을 테스트하는 방식이다.
 
-|<a name="Figure 5">![alt 10-crop testing]({{ img_dir }}10-crop.png)</a>|
+|<a name="Figure 01">![alt 10-crop testing]({{ img_dir }}10-crop.png)</a>|
 |:---:|
 |10-crop testing의 예시|
 
@@ -286,16 +286,17 @@ VGG에서 사용한 테스트 방법으로, Fully-Convolutional Network를 사�
 
 ImageNet 2012 classification dataset에 대한 실험이다.
 
-|<a name="Figure 6">![alt ResNet 모델 구조]({{ img_dir }}4-imgnet_cls.png)</a>|
+|<a name="Figure 4">![alt ResNet 모델 구조]({{ img_dir }}4-imgnet_cls.png)</a>|
 |:---:|
-|실험에서 사용한 ResNet 모델들의 구조|
+|Figure 4. 실험에서 사용한 ResNet 모델들의 구조|
 
 
-|<a name="Figure 7">![alt Training Error]({{ img_dir }}5-imgnet_train_error.png)</a>|
+|<a name="Figure 5">![alt Training Error]({{ img_dir }}5-imgnet_train_error.png)</a>|
 |:---:|
-|ImageNet 2012 학습을 반복하며 나타난 training error|
+|Figure 5. ImageNet 2012 학습을 반복하며 나타난 training error|
 
-실험에서 사용한 신경망 모델의 구조는 [Figure 6](#Figure 6)과 같다.
+실험에서 사용한 신경망 모델의 구조는 [Figure 4](#Figure 4)과 같고,
+  여기선 학습을 하면서 training error가 어떻게 바뀌었는지를 살펴보도록 하겠다 ([Figure 5](#Figure 5)).
 
 ### PlainNet
 
@@ -340,13 +341,8 @@ PlainNet과 비교 결과는 아래와 같다.
 아무튼 재미있게 읽었던 논문이고 왜 이렇게 인용이 많이 됐는지, 저자들의 노고를 알 수 있는 좋은 기회였다.
 
 
-
-
----
-[^1]: Plain Net은 VGG를 기반으로 만든 모델이다. 모델의 자세한 구조는 [Network Architectures](#network-architectures)를 참고.
- 
-
-
 ---
 # 참고 자료
 - He, Kaiming, et al. "Deep residual learning for image recognition." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.
+
+[^1]: Plain Net은 VGG를 기반으로 만든 모델이다. 모델의 자세한 구조는 [Network Architectures](#network-architectures)를 참고.
