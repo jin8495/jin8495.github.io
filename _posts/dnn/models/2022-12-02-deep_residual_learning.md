@@ -280,10 +280,70 @@ VGG에서 사용한 테스트 방법으로, Fully-Convolutional Network를 사�
 
 # Experiments
 
+여기선 ResNet 논문에서 실험한 결과를 중요한 일부만 다루겠다.
+
+## PlainNet vs ResNet
+
+ImageNet 2012 classification dataset에 대한 실험이다.
+
+|<a name="Figure 6">![alt ResNet 모델 구조]({{ img_dir }}4-imgnet_cls.png)</a>|
+|:---:|
+|실험에서 사용한 ResNet 모델들의 구조|
+
+
+|<a name="Figure 7">![alt Training Error]({{ img_dir }}5-imgnet_train_error.png)</a>|
+|:---:|
+|ImageNet 2012 학습을 반복하며 나타난 training error|
+
+실험에서 사용한 신경망 모델의 구조는 [Figure 6](#Figure 6)과 같다.
+
+### PlainNet
+
+PlainNet에서는 34-layer의 모델이 18-layer 모델보다 더 나쁜 training error와 validation error를 보였다.
+즉, accuracy degradation 발생했다.
+
+다음과 같은 이유로 vanishing gradient로 인한 문제는 아니라고 주장한다.
+- Batch normalization 덕에 forward propagation의 activation 값이 non-zero variance를 갖는다는 것을 확인
+- Backward propagation의 gradient 분포 역시 고르다는 것을 확인
+
+자세한 이유를 규명하는 일은 future work로 남기겠다고 한다.
+
+### ResNet
+
+전반적으로 34-layer의 모델이 18-layer 모델보다 좋은 training error와 validation error를 보였다.
+
+PlainNet과 비교 결과는 아래와 같다.
+- 34-layer 모델을 PlainNet과 비교 시, 같은 깊이의 모델이더라도 **더 좋은 성능**
+- 18-layer 모델을 PlainNet과 비교 시, 모델 성능은 비슷하지만 **빠른 수렴 속도**
+
+## 그 외 실험들
+
+이 외에도 논문에서는 많은 실험을 했다.
+- Shortcut connection으로 identity mapping을 쓰는 것과 linear mapping을 쓰는 것은 얼마나 차이나는지?
+- Bottleneck 구조를 깊게 만들면 결과는 어떤지?
+- 신경망 모델이 전체적으로 깊어지면 성능은 얼마나 바뀌는지?
+- 각 layer의 출력의 분포는 어떤지?
+
+이번 포스트에서 다루진 않을 예정이며 여기서 마무리 짓도록 하겠다.
+
+---
+
+# 마무리
+
+어렴풋이 구조만 들어왔던 논문이었는데, 회사 업무 때문에 자세히 읽어보게 됐다.
+이유없이 shortcut connection을 쓴 건 아니었단걸 알게 됐다.
+
+다만 본인들의 논리인, *"identity function과 optimal model은 좀 더 비슷할 것이다."*를 조금 더 뒷받침하려면,
+  bottleneck 모듈의 마지막에는 activation function인 ReLU를 넣지 않았어야 했는데, 그게 좀 아쉬웠다.
+실제로 후속 연구들에서는 ReLU를 넣지 않고 더욱 더 좋은 실험 결과를 보여주긴 한다.
+
+아무튼 재미있게 읽었던 논문이고 왜 이렇게 인용이 많이 됐는지, 저자들의 노고를 알 수 있는 좋은 기회였다.
+
+
 
 
 ---
-[^1]: Plain Net은 VGG를 기반으로 만든 모델이다. 모델의 자세한 구조는 [Network Architectures](#Network Architectures)를 참고.
+[^1]: Plain Net은 VGG를 기반으로 만든 모델이다. 모델의 자세한 구조는 [Network Architectures](#network-architectures)를 참고.
  
 
 
