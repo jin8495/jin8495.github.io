@@ -5,12 +5,12 @@
   - [ ] Feed
   - [ ] SEO
     - Google Search Console couldn't read my sitemap.xml
-      - [ ] https://julynine2.tistory.com/entry/Google-Search-Console-Sitemap-couldnt-fetch
+      - [x] https://julynine2.tistory.com/entry/Google-Search-Console-Sitemap-couldnt-fetch
     - I think Naver Webmaster couldn't read neither
       - [ ] https://searchadvisor.naver.com/guide
   - [x] Google Analytics
 ### - Posts
-  - [ ] TOC is not floating around. Need to be fixed.
+  - [x] TOC is not floating around. Need to be fixed.
 ### - Sidebar
   - [x] Change the color of author links
   - [ ] When the window is small enough for author profile not fit in,
@@ -31,8 +31,6 @@
 ### - etc
   - [x] Favicon
     - ~~Not working. Need to figure out.~~
-  - [ ] Portrait
-    - Idea: Outdoor stickers on the back of my laptop
   - [ ] Pagination
     - [x] Prev. and Next. within the same category
     - [ ] Prev. and Next. button with its post name
