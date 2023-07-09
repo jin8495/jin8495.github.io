@@ -342,46 +342,53 @@ defaults:
     values:
       toc: true
       category:
-        - "HW-GPGPU"
+        - "HW/GPGPU"
   - scope:
       path: "_posts/dnn/models"
       type: posts
     values:
       toc: true
       category:
-        - "DNN-Models"
+        - "DNN/Models"
+  - scope:
+      path: "_posts/dnn/etc"
+      type: posts
+    values:
+      toc: true
+      category:
+        - "DNN/etc"
   - scope:
       path: "_posts/climbing/bouldering"
       type: posts
     values:
       toc: true
       category:
-        - "Climbing-Bouldering"
+        - "Climbing/Bouldering"
   - scope:
       path: "_posts/climbing/sport"
       type: posts
     values:
       toc: true
       category:
-        - "Climbing-Sport"
+        - "Climbing/Sport"
   - scope:
       path: "_posts/climbing/multi_pitch"
       type: posts
     values:
       toc: true
       category:
-        - "Climbing-Multi_Pitch"
+        - "Climbing/Multi_Pitch"
   - scope:
       path: "_posts/others/books"
       type: posts
     values:
       toc: false
       category:
-        - "Others-Books"
+        - "Others/Books"
   - scope:
       path: "_posts/others/etc"
       type: posts
     values:
       toc: false
       category:
-        - "Others-etc."
+        - "Others/etc"
