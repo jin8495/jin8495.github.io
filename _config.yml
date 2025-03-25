@@ -19,9 +19,9 @@ minimal_mistakes_skin    : "contrast"
 locale                   : "en-US"
 title                    : "Archives of Everyday Life."
 title_separator          : "|"
-subtitle                 : "Work Hard. Climb Harder." # site tagline that appears below site title in masthead
+subtitle                 : "Work Hard. Write Harder." # site tagline that appears below site title in masthead
 name                     : "Zachary Hoyong Jin"
-description              : "컴퓨터 구조와 반도체 설계, 그리고 클라이밍을 이야기하는 블로그."
+description              : "컴퓨터와 반도체를 이야기하는 블로그."
 url                      : "https://jin8495.github.io"  # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "/"                          # the subpath of your site, e.g. "/blog"
 repository               : "jin8495/jin8495.github.io"  # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -116,8 +116,8 @@ author:
       description: "Computer Arch."
     - icon: "{{ fas fa-brain }}"
       description: "Deep Learning."
-    - icon: "{{ fas fa-mountain }}"
-      description: "Sport Climbing."
+    # - icon: "{{ fas fa-mountain }}"
+    #   description: "Sport Climbing."
   location         : "Suwon, South Korea"
   links:
     - label: "Email"
@@ -129,9 +129,9 @@ author:
     - label: "Linked-in"
       icon: "fab fa-linkedin fa-lg fa-fw icon-skin"
       url: "https://www.linkedin.com/in/jin8495/"
-    - label: "Instagram"
-      icon: "fab fa-instagram fa-lg fa-fw icon-skin"
-      url: "https://instagram.com/rtds_beta/"
+    # - label: "Instagram"
+    #   icon: "fab fa-instagram fa-lg fa-fw icon-skin"
+    #   url: "https://instagram.com/rtds_beta/"
 #    - label: "Website"
 #      icon: "fas fa-fw fa-link"
 #      # url: "https://your-website.com"
@@ -357,27 +357,27 @@ defaults:
       toc: true
       category:
         - "DNN/etc"
-  - scope:
-      path: "_posts/climbing/bouldering"
-      type: posts
-    values:
-      toc: true
-      category:
-        - "Climbing/Bouldering"
-  - scope:
-      path: "_posts/climbing/sport"
-      type: posts
-    values:
-      toc: true
-      category:
-        - "Climbing/Sport"
-  - scope:
-      path: "_posts/climbing/multi_pitch"
-      type: posts
-    values:
-      toc: true
-      category:
-        - "Climbing/Multi_Pitch"
+  # - scope:
+  #     path: "_posts/climbing/bouldering"
+  #     type: posts
+  #   values:
+  #     toc: true
+  #     category:
+  #       - "Climbing/Bouldering"
+  # - scope:
+  #     path: "_posts/climbing/sport"
+  #     type: posts
+  #   values:
+  #     toc: true
+  #     category:
+  #       - "Climbing/Sport"
+  # - scope:
+  #     path: "_posts/climbing/multi_pitch"
+  #     type: posts
+  #   values:
+  #     toc: true
+  #     category:
+  #       - "Climbing/Multi_Pitch"
   - scope:
       path: "_posts/others/books"
       type: posts
