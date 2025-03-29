@@ -1,5 +1,8 @@
 from md2post import *
 
+import pathlib
+import os
+
 logger = logging.getLogger(__name__)
 
 class Content(object):
@@ -77,12 +80,15 @@ class Content(object):
         """
         return self.contents
 
-    def write_contents(self, new_page_path: Path, remove_comments=False):
+    def write_contents(self,
+                       new_page_path: Path, new_attach_path: Path = None,
+                       remove_comments = False):
         """
         Write the content and its attachments to a new location.
 
         Arguments:
         - new_page_path (Path): The target file path for the content.
+        - new_attach_path (Path, optional): Directory to save attachments.
         - remove_comments (bool): If True, remove lines between # blog-comments-start and # blog-comments-end.
 
         This method writes the processed content lines to the specified path and
@@ -90,8 +96,20 @@ class Content(object):
         """
         logger.debug("Writing contents to %s, remove_comments=%s", new_page_path, remove_comments)
         # Write content page
+        # Create the directory for the new page if it doesn't exist
+        new_page_path.parent.mkdir(parents=True, exist_ok=True)
+
+        # If new_attach_path is provided, calculate the relative path
+        if new_attach_path:
+            # Get the directory containing the page
+            page_dir = new_page_path.parent
+            # Calculate relative path from page directory to attachment directory
+            rel_path = os.path.relpath(new_attach_path, page_dir)
+            logger.info(f"Relative path from page dir to attachments: {rel_path}")
+            new_attach_path = Path(rel_path)
+
         with open(new_page_path, "a") as f:
-            contents = self.__fill_attachements(self.contents, self.attached)
+            contents = self.__fill_attachements(self.contents, self.attached, new_attach_path)
 
             # Remove comment blocks if the flag is True
             if remove_comments:
@@ -101,7 +119,7 @@ class Content(object):
                 f.write(content_line)
 
         # Copy attachments
-        new_dir_path = new_page_path.parent
+        new_dir_path = new_page_path.parent/new_attach_path if new_attach_path else new_page_path.parent
         for attachment in self.attached:
             old_attachment_path = attachment["path"]
             old_attachment_name = old_attachment_path.name
@@ -110,43 +128,48 @@ class Content(object):
             old_attachment_dir = old_attachment_path.parent
             new_attachment_dir = new_dir_path / old_attachment_dir
             new_attachment_path = new_attachment_dir / old_attachment_name
-            new_attachment_dir.mkdir(exist_ok=True)
+            new_attachment_dir.mkdir(exist_ok=True, parents=True)
 
             # Write attachment binary
             with open(new_attachment_path, "wb") as f:
                 f.write(attachment["bin"])
         logger.info("Contents and attachments written to %s", new_page_path)
 
-    def __fill_attachements(self, contents, attached):
+    def __fill_attachements(self, contents, attached, new_path=None):
         """
         Replace placeholders in content with actual paths to attachments.
 
         Arguments:
         - contents (list): The original content lines.
         - attached (list): List of attachments with their metadata.
+        - new_path (Path, optional): Directory to save attachments.
 
         Returns:
         - list: Updated content lines with actual attachment paths inserted.
         """
         filled_contents = contents
         for attachement in attached:
-            filled_contents = self.__fill_single_attachement(filled_contents, attachement)
+            filled_contents = self.__fill_single_attachement(filled_contents, attachement, new_path)
         return filled_contents
 
-    def __fill_single_attachement(self, contents, attachement):
+    def __fill_single_attachement(self, contents, attachement, new_path=None):
         """
         Insert the actual attachment path into a specific placeholder.
 
         Arguments:
         - contents (list): The content lines.
         - attachement (dict): Metadata for a specific attachment.
+        - new_path (Path, optional): Directory to save attachments.
 
         Returns:
         - list: Content lines with the specified attachment path updated.
         """
         num_line = attachement["num_line"]
         idx = attachement["idx"]
-        path = attachement["path"]
+        if new_path:
+            path = new_path / attachement["path"].name
+        else:
+            path = attachement["path"]
 
         # Get an exact position to put path
         contents_line = contents[num_line]

@@ -46,7 +46,9 @@ class ObsidianPage(object):
         """
         return self.prpts.is_blog_post()
 
-    def write_page(self, new_page_path: Path, include_all: bool = False,
+    def write_page(self,
+                   new_page_path: Path, new_attach_path: Path = None,
+                   include_all: bool = False,
                    exist_ok: bool = False, exclude_prpt_keys=None, prefix=None,
                    remove_comments=False):
         """
@@ -54,6 +56,7 @@ class ObsidianPage(object):
 
         Arguments:
         - new_page_path (Path): The target path to write the page.
+        - new_attach_path (Path, optional): Directory to save attachments.
         - include_all (bool): If True, include all properties in the output, regardless of filtering.
         - exist_ok (bool): If False, raise an error if the target file already exists.
         - exclude_prpt_keys (list, optional): A list of property keys to exclude from the output.
@@ -72,7 +75,10 @@ class ObsidianPage(object):
             new_page_path,
             include_all=include_all, exist_ok=exist_ok, exclude_keys=exclude_prpt_keys
         )
-        self.contents.write_contents(new_page_path, remove_comments=remove_comments)
+        self.contents.write_contents(
+            new_page_path=new_page_path,
+            new_attach_path=new_attach_path,
+            remove_comments=remove_comments)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

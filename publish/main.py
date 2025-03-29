@@ -1,15 +1,17 @@
+import pathlib
 from pathlib import Path
 from md2post import *
 
 import argparse
+from typing import Dict
 
-def main(input_path, output_path):
+def main(input_path: Path, output_dir: Path):
     """
     Main function to process markdown files in an Obsidian Vault and export blog posts.
 
     Arguments:
     - input_path (Path): Path to the root directory of the Obsidian Vault.
-    - output_path (Path): Path to the directory where processed files will be stored.
+    - output_dir (Path): Path to the output directory where blog posts and attachments will be saved.
 
     Behavior:
     - Searches for all markdown files in the input directory.
@@ -64,32 +66,35 @@ def main(input_path, output_path):
         if blog_date == "":
             raise ValueError(f"[ERROR] Missing 'blog-date' for {blog_post.page_path}")
 
-        # Construct the output path for the blog post
-        target_path = output_path / blog_dir
-        target_file_path = target_path / blog_post.page_path.name
+        # Construct the post and attachment paths
+        output_dir = output_dir.resolve()
+        tgt_post_path = output_dir / "_posts" / blog_dir / blog_post.page_path.name
+        tgt_attach_dir = output_dir / "assets" / blog_dir
 
         # Write the blog post and attachments to the output directory with a prefix
         # Exclude 'blog-post' and 'blog-directory' properties from the output
         blog_post.write_page(
-            target_file_path,
+            new_page_path=tgt_post_path,
+            new_attach_path=tgt_attach_dir,
             exclude_prpt_keys=['blog-post', 'blog-directory'],
             prefix=blog_date,  # Use blog-date as the prefix,
             remove_comments=True # Remove blog comments if specified
         )
 
         # Log the successfully copied blog post
-        print(f"Copied blog post to: {target_file_path}")
+        print(f"Copied blog post to: {tgt_post_path} and attachments to: {tgt_attach_dir}")
 
 if __name__ == "__main__":
     # Parse command-line arguments for input and output paths
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--input", required=True, type=str, help="Path to the Obsidian Vault.")
-    parser.add_argument("-o", "--output", required=True, type=str, help="Path to directory where the result will be stored.")
+    parser.add_argument("-o", "--output-dir", required=True, type=str,
+                        help="Path to directory where the result will be saved. Posts will be saved in '<output_dir>/_posts' and attachments in '<output_dir>/assets'.")
     args = parser.parse_args()
 
     # Convert input and output paths to Path objects
     input_path = Path(args.input)
-    output_path = Path(args.output)
+    output_dir = Path(args.output_dir)
 
     # Execute the main function with the provided paths
-    main(input_path, output_path)
+    main(input_path, output_dir)
