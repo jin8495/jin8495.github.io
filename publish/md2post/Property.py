@@ -89,7 +89,7 @@ class Property(object):
             exclude_keys = []
 
         if not exist_ok and new_page_path.exists():
-            print("[INFO] Target path already exists.")
+            logger.info("Target path already exists.")
             exit(1)
 
         with open(new_page_path, "w") as f:
@@ -178,7 +178,7 @@ class Property(object):
             if ":" in line:
                 colon_cnt += 1
         if colon_cnt != 1:
-            print("[INFO] Error: Given property has multiple key-value pairs.")
+            logger.error("Given property has multiple key-value pairs.")
             exit(1)
         return cleaned_prpt_lines
 

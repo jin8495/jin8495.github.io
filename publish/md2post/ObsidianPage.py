@@ -68,7 +68,7 @@ class ObsidianPage(object):
 
         # Apply prefix to the file name if provided
         if prefix:
-            new_page_path = new_target_dir / f"{prefix}_{new_page_path.name}"
+            new_page_path = new_target_dir / f"{prefix}-{new_page_path.name}"
 
         # Pass exclude_prpt_keys to write_properties
         self.prpts.write_properties(

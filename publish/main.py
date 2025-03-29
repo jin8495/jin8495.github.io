@@ -5,6 +5,8 @@ from md2post import *
 import argparse
 from typing import Dict
 
+logger = logging.getLogger(__name__)
+
 def main(input_path: Path, output_dir: Path):
     """
     Main function to process markdown files in an Obsidian Vault and export blog posts.
@@ -59,12 +61,14 @@ def main(input_path: Path, output_dir: Path):
 
         if str(blog_dir) == "":
             # Raise an error if 'blog-directory' is missing or empty
-            raise ValueError(f"[WARNING] Skipping {blog_post.page_path}: Missing 'blog-directory'.")
+            logger.error(f"Missing 'blog-directory' for {blog_post.page_path}")
+            exit(1)
 
         # Extract blog-date for prefix
-        blog_date = prpts.get("blog-date", [""][0])
+        blog_date = prpts.get("blog-date", [""][0])[0]
         if blog_date == "":
-            raise ValueError(f"[ERROR] Missing 'blog-date' for {blog_post.page_path}")
+            logger.error(f"Missing 'blog-date' for {blog_post.page_path}")
+            exit(1)
 
         # Construct the post and attachment paths
         output_dir = output_dir.resolve()
@@ -82,7 +86,7 @@ def main(input_path: Path, output_dir: Path):
         )
 
         # Log the successfully copied blog post
-        print(f"Copied blog post to: {tgt_post_path} and attachments to: {tgt_attach_dir}")
+        logger.info(f"Copied blog post to: {tgt_post_path} and attachments to: {tgt_attach_dir}")
 
 if __name__ == "__main__":
     # Parse command-line arguments for input and output paths
