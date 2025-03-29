@@ -174,7 +174,12 @@ class Content(object):
                 if idx_left_parenthesis == -1:
                     break
 
-                attached_file_path = Path(line[idx_left_parenthesis+3:idx_right_parenthesis])
+                attached_file_path = line[idx_left_parenthesis+3:idx_right_parenthesis]
+                # Remove the pipe character and any text after it if present
+                if "|" in attached_file_path:
+                    attached_file_path = attached_file_path.split("|")[0]
+                attached_file_path = Path(attached_file_path)
+
                 with open(self.dir_path/attached_file_path, "rb") as f:
                     binary = f.read()
                 yield num_line, idx, attached_file_path, binary
