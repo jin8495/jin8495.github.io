@@ -74,7 +74,9 @@ def get_prpts_idx(obsidian_page_lines):
             break
 
     if prpt_end_idx == 0 or not found_colon:
-        raise ValueError("[INFO] No valid YAML frontmatter found in the page.")
+        # raise ValueError("[INFO] No valid YAML frontmatter found in the page.")
+        print("[INFO] No valid YAML frontmatter found in the page.")
+        return 0, 0
 
     return prpt_start_idx, prpt_end_idx
 
