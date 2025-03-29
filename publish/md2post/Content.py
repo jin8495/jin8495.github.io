@@ -1,5 +1,7 @@
 from md2post import *
 
+logger = logging.getLogger(__name__)
+
 class Content(object):
     """
     Represents the content of an Obsidian page, handling both the main text content
@@ -32,13 +34,17 @@ class Content(object):
         This method reads the markdown file, extracts the main content, identifies
         any attachments, and prepares the content for further processing.
         """
+        logger.debug("Initializing Content with page_path: %s", page_path)
         self.page_path = page_path.resolve()
         self.dir_path = self.page_path.parent
         with open(self.page_path, "r") as f:
             obsidian_page = f.readlines()
-        self.prpts_start_idx, self.prpts_end_idx = get_prpts_idx(obsidian_page)
-        self.contents_lines = obsidian_page[self.prpts_end_idx+1:]
+        logger.debug("Read %d lines from file", len(obsidian_page))
 
+        self.prpts_start_idx, self.prpts_end_idx = get_prpts_idx(obsidian_page)
+        logger.debug("Frontmatter indexes found: start=%d, end=%d", self.prpts_start_idx, self.prpts_end_idx)
+
+        self.contents_lines = obsidian_page[self.prpts_end_idx+1:]
         self.attached = []
         for num_line, idx, path, binary in self.__iter_attached_previews(self.contents_lines):
             self.attached.append({
@@ -47,7 +53,10 @@ class Content(object):
                 "path": path,
                 "bin": binary
             })
+        logger.info("Total attachments found: %d", len(self.attached))
+
         self.contents = self.__get_contents_lines(self.contents_lines)
+        logger.debug("Finished initializing Content, %d lines of content processed", len(self.contents))
 
     def get_attached(self):
         """
@@ -79,6 +88,7 @@ class Content(object):
         This method writes the processed content lines to the specified path and
         copies the referenced attachments to the appropriate location.
         """
+        logger.debug("Writing contents to %s, remove_comments=%s", new_page_path, remove_comments)
         # Write content page
         with open(new_page_path, "a") as f:
             contents = self.__fill_attachements(self.contents, self.attached)
@@ -105,6 +115,7 @@ class Content(object):
             # Write attachment binary
             with open(new_attachment_path, "wb") as f:
                 f.write(attachment["bin"])
+        logger.info("Contents and attachments written to %s", new_page_path)
 
     def __fill_attachements(self, contents, attached):
         """

@@ -31,3 +31,6 @@ _site
 
 # Python
 __pycache__
+
+# Log
+*.log

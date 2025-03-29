@@ -1,3 +1,7 @@
+import logging
+
+logger = logging.getLogger(__name__)
+
 def is_blog_prpt(key):
     """
     Check if a given key is a blog-related property.
@@ -26,8 +30,8 @@ def get_prpts_idx(obsidian_page_lines):
         - prpt_start_idx (int): The index of the line containing the first `---`.
         - prpt_end_idx (int): The index of the line containing the second `---`.
 
-    Raises:
-    - SystemExit: If the YAML frontmatter does not contain key-value pairs or is missing `---` markers.
+    Logging:
+    - Logs a warning if no valid YAML frontmatter is found.
 
     Behavior:
     - This function searches for lines starting with `---` to identify the boundaries of the YAML frontmatter.
@@ -74,8 +78,7 @@ def get_prpts_idx(obsidian_page_lines):
             break
 
     if prpt_end_idx == 0 or not found_colon:
-        # raise ValueError("[INFO] No valid YAML frontmatter found in the page.")
-        print("[INFO] No valid YAML frontmatter found in the page.")
+        logger.warning("The page may not contain any properties or the format is incorrect.")
         return 0, 0
 
     return prpt_start_idx, prpt_end_idx

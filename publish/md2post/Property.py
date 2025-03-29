@@ -1,5 +1,7 @@
 from md2post import *
 
+logger = logging.getLogger(__name__)
+
 class Property(object):
     """
     Represents the YAML frontmatter (properties) of an Obsidian page.
@@ -31,16 +33,25 @@ class Property(object):
         This method extracts the frontmatter section of the file and parses it into a
         dictionary (`prpts`) for easy access and manipulation.
         """
+        logger.debug("Initializing Property with page_path: %s", page_path)
         self.page_path = page_path.resolve()
         with open(self.page_path, "r") as f:
             obsidian_page = f.readlines()
+        logger.debug("Read %d lines from the page", len(obsidian_page))
+
         self.prpts_start_idx, self.prpts_end_idx = get_prpts_idx(obsidian_page)
+        logger.debug("Frontmatter indexes found: start=%d, end=%d",
+                     self.prpts_start_idx, self.prpts_end_idx)
+
         self.prpts_lines = obsidian_page[self.prpts_start_idx+1:self.prpts_end_idx]
+        logger.debug("Extracted %d lines of properties", len(self.prpts_lines))
 
         self.prpts = {}
         for prpt_lines in self.__iter_prpts(self.prpts_lines):
             key, val = self.parse_single_prpt(prpt_lines)
             self.prpts[key] = val
+        
+        logger.info("Parsed %d properties from frontmatter", len(self.prpts))
 
     def get_prpts(self):
         """
