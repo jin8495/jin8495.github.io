@@ -24,16 +24,16 @@ main:
     - title: "etc."
       url: /dnn/etc
 
-  - title: "Climbing"
-    sublinks:
-    - title: "Bouldering"
-      url: /climbing/bouldering
-    - title: "Sport"
-      url: /climbing/sport
-    - title: "Multi-pitch"
-      url: /climbing/multi_pitch
-    - title: "etc."
-      url: /climbing/etc
+  # - title: "Climbing"
+  #   sublinks:
+  #   - title: "Bouldering"
+  #     url: /climbing/bouldering
+  #   - title: "Sport"
+  #     url: /climbing/sport
+  #   - title: "Multi-pitch"
+  #     url: /climbing/multi_pitch
+  #   - title: "etc."
+  #     url: /climbing/etc
 
   - title: "Others"
     sublinks:
