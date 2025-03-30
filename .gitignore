@@ -37,3 +37,7 @@ __pycache__
 
 # Log
 *.log
+
+# Test
+publish/tests/test_pages
+publish/result

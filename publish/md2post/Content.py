@@ -114,6 +114,9 @@ class Content(object):
             # Remove comment blocks if the flag is True
             if remove_comments:
                 contents = self.__remove_comment_blocks(contents)
+            
+            # Replace attachment blocks with Jekyll's attachment block format
+            contents = self.__replace_attachment_block_format(contents)
 
             for content_line in contents:
                 f.write(content_line)
@@ -181,8 +184,6 @@ class Content(object):
         # Put path
         contents_line = contents[num_line]
         new_contents_line = contents_line[:target_idx] + str(path) + contents_line[target_idx:]
-        # Replace new_contents_line's format from `![[path]]` to `![alt text](path)`
-        new_contents_line = new_contents_line.replace("![[", "![](").replace("]]", ")")
         contents[num_line] = new_contents_line
 
         return contents
@@ -286,3 +287,23 @@ class Content(object):
             cleaned_contents.append(line)
 
         return cleaned_contents
+    
+    def __replace_attachment_block_format(self, contents):
+        """
+        Replace the attachment block format to Jekyll's format.
+        ![[attachment]] -> ![](attachment)
+
+        Arguments:
+        - contents (list): The content lines.
+
+        Returns:
+        - list: Content lines with content blocks replaced.
+        """
+        replaced_contents = []
+        for line in contents:
+            # Replace the attachment block format
+            line = line.replace("![[", "![](").replace("]]", ")")
+            replaced_contents.append(line)
+        return replaced_contents
+
+        
