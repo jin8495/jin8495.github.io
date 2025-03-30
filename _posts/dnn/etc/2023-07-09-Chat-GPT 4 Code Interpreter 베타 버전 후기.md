@@ -4,6 +4,7 @@ date: 2023-07-09
 tags: 
   - 딥러닝
   - ChatGPT
+  - 리뷰
 toc: false
 ---
 최근에 Chat-GPT Plus를 결제하고 나서, 이것저것 실험을 해보고 있었다.
