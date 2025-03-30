@@ -7,17 +7,23 @@ permalink: about/
 # Zachary Hoyong Jin
 
 ### Occupation
-- **OPENEDGES Technology, Seoul, Korea (2022 ~ )**
-  - Staff Engineer, NPU Team
+- **Hyundai Motor Company, Seongnam, Korea (2024.07 ~)**
+  - Research Engineer, Semiconductor Development Group
+  - NPU Architect
+- **OPENEDGES Technology, Seoul, Korea (2022.08 ~ 2024.03)**
+  - Senior Engineer, NPU Team
+  - RISC-V Processor and Vector Unit Development
+- **OPENEDGES Technology, Seoul, Korea (2022.08 ~ 2024.03)**
+  - Engineer, NPU Team
+  - RISC-V Processor and Vector Unit Development
 
 ---
 
 ### Education
-- **Bachelor's Degree of Electrical and Computer Engineering (2013 ~ 2020)**
-  - Ajou University, Suwon, Korea
-
 - **Master's Degree of Electrical and Computer Engineering (2020 ~ 2023)**
   - Sungkyunkwan University, Suwon, Korea
+- **Bachelor's Degree of Electrical and Computer Engineering (2013 ~ 2020)**
+  - Ajou University, Suwon, Korea
 
 ---
 
