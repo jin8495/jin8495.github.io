@@ -119,14 +119,13 @@ class Content(object):
                 f.write(content_line)
 
         # Copy attachments
-        new_dir_path = new_page_path.parent/new_attach_path if new_attach_path else new_page_path.parent
         for attachment in self.attached:
             old_attachment_path = attachment["path"]
             old_attachment_name = old_attachment_path.name
+            old_attachment_dir = old_attachment_path.parent
 
             # mkdir
-            old_attachment_dir = old_attachment_path.parent
-            new_attachment_dir = new_dir_path / old_attachment_dir
+            new_attachment_dir = new_page_path.parent / new_attach_path if new_attach_path else new_page_path.parent / old_attachment_dir
             new_attachment_path = new_attachment_dir / old_attachment_name
             new_attachment_dir.mkdir(exist_ok=True, parents=True)
 
@@ -182,6 +181,8 @@ class Content(object):
         # Put path
         contents_line = contents[num_line]
         new_contents_line = contents_line[:target_idx] + str(path) + contents_line[target_idx:]
+        # Replace new_contents_line's format from `![[path]]` to `![alt text](path)`
+        new_contents_line = new_contents_line.replace("![[", "![](").replace("]]", ")")
         contents[num_line] = new_contents_line
 
         return contents

@@ -73,7 +73,7 @@ def main(input_path: Path, output_dir: Path):
         # Construct the post and attachment paths
         output_dir = output_dir.resolve()
         tgt_post_path = output_dir / "_posts" / blog_dir / blog_post.page_path.name
-        tgt_attach_dir = output_dir / "assets" / blog_dir
+        tgt_attach_dir = output_dir / "assets" / blog_dir / blog_post.page_path.name.replace(".md", "")
 
         # Write the blog post and attachments to the output directory with a prefix
         # Exclude 'blog-post' and 'blog-directory' properties from the output
@@ -82,6 +82,7 @@ def main(input_path: Path, output_dir: Path):
             new_attach_path=tgt_attach_dir,
             exclude_prpt_keys=['blog-post', 'blog-directory'],
             prefix=blog_date,  # Use blog-date as the prefix,
+            exist_ok=True, # Allow overwriting existing files
             remove_comments=True # Remove blog comments if specified
         )
 

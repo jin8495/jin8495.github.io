@@ -63,12 +63,19 @@ class ObsidianPage(object):
         - prefix (str, optional): A string to prefix the file name with. If provided, the resulting
                                   file name will be `prefix_original_name`.
         """
-        new_target_dir = new_page_path.parent
-        new_target_dir.mkdir(parents=True, exist_ok=True)  # Ensure directory exists
+        # Create the target directory for the new page
+        new_page_target_dir = new_page_path.parent
+        new_page_target_dir.mkdir(parents=True, exist_ok=True)  # Ensure directory exists
+
+        # Create the target directory for attachments if provided
+        new_attach_target_dir = new_attach_path.parent if new_attach_path else None
+        if new_attach_target_dir:
+            new_attach_target_dir.mkdir(parents=True, exist_ok=True)
 
         # Apply prefix to the file name if provided
         if prefix:
-            new_page_path = new_target_dir / f"{prefix}-{new_page_path.name}"
+            new_page_path = new_page_target_dir / f"{prefix}-{new_page_path.name}"
+            new_attach_path = new_attach_target_dir / f"{prefix}-{new_attach_path.name}" if new_attach_path else None
 
         # Pass exclude_prpt_keys to write_properties
         self.prpts.write_properties(
