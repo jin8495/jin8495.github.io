@@ -3,15 +3,17 @@ main:
   - title: "About"
     url: /about/
 
-  - title: "SW"
-    sublinks:
-      - title: "Not yet determined"
-        url: /sw/nyd
-      - title: "etc."
-        url: /sw/etc
+  # - title: "SW"
+  #   sublinks:
+  #     - title: "Not yet determined"
+  #       url: /sw/nyd
+  #     - title: "etc."
+  #       url: /sw/etc
 
   - title: "HW"
     sublinks:
+    - title: "RISC-V"
+      url: /hw/riscv
     - title: "GPGPU"
       url: /hw/gpgpu
     - title: "etc."

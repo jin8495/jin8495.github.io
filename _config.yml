@@ -337,6 +337,14 @@ defaults:
 
   # set categories by directory
   - scope:
+      path: "_posts/hw/riscv"
+      type: posts
+    values:
+      toc: true
+      category:
+        - "HW/RISC-V"
+
+  - scope:
       path: "_posts/hw/gpgpu"
       type: posts
     values:
