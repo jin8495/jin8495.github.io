@@ -343,7 +343,6 @@ defaults:
       toc: true
       category:
         - "SW/System Software"
-
   - scope:
       path: "_posts/hw/riscv"
       type: posts
@@ -351,7 +350,6 @@ defaults:
       toc: true
       category:
         - "HW/RISC-V"
-
   - scope:
       path: "_posts/hw/gpgpu"
       type: posts
@@ -359,6 +357,13 @@ defaults:
       toc: true
       category:
         - "HW/GPGPU"
+  - scope:
+      path: "_posts/hw/etc"
+      type: posts
+    values:
+      toc: true
+      category:
+        - "HW/etc"
   - scope:
       path: "_posts/dnn/models"
       type: posts
